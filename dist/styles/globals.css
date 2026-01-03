@@ -1,0 +1,614 @@
+@import "tailwindcss";
+
+/*
+ * ============================================
+ * ATOM UI DESIGN SYSTEM
+ * ============================================
+ * 
+ * This file defines all design tokens for Atom UI.
+ * 
+ * Structure:
+ * 1. Core Colors - Raw color palette (agnostic, no implied use)
+ * 2. Crystal Theme - Light mode (default)
+ * 3. Obsidian Theme - Dark mode
+ * 4. Spacing Scale
+ * 5. Tailwind Theme Extension
+ *
+ * Users can override any variable to customize their theme.
+ */
+
+/* ============================================
+ * GOOGLE FONTS - Inter
+ * ============================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* ============================================
+ * 1. CORE COLOR PALETTE
+ * Raw values from Figma Core Library
+ * These are agnostic - no implied use cases
+ * ============================================ */
+:root {
+  /* Common */
+  --atom-white: #ffffff;
+  --atom-black: #000000;
+
+  /* Grey Scale */
+  --atom-grey-25: #f5f5f5;
+  --atom-grey-50: #edeef2;
+  --atom-grey-100: #d6d7e0;
+  --atom-grey-200: #bebfc7;
+  --atom-grey-300: #a5a6ad;
+  --atom-grey-400: #8d8e94;
+  --atom-grey-500: #75757a;
+  --atom-grey-600: #5c5d61;
+  --atom-grey-700: #444447;
+  --atom-grey-800: #29292b;
+  --atom-grey-900: #202021;
+  --atom-grey-1000: #111112;
+
+  /* Blue */
+  --atom-b-25: #f2f4ff;
+  --atom-b-50: #d1d8ff;
+  --atom-b-100: #b8c3ff;
+  --atom-b-200: #9eaeff;
+  --atom-b-300: #6b83ff;
+  --atom-b-400: #4e69f2;
+  --atom-b-500: #1b3ad8;
+  --atom-b-600: #1630b2;
+  --atom-b-700: #12268c;
+  --atom-b-800: #0d1b66;
+  --atom-b-900: #081140;
+  --atom-b-1000: #03071a;
+
+  /* Light Blue */
+  --atom-lb-25: #f1f8fe;
+  --atom-lb-50: #e8f3fe;
+  --atom-lb-100: #d1e7fd;
+  --atom-lb-200: #a4d0fb;
+  --atom-lb-300: #76b8fa;
+  --atom-lb-400: #49a1f8;
+  --atom-lb-500: #1b89f6;
+  --atom-lb-600: #166ec5;
+  --atom-lb-700: #105294;
+  --atom-lb-800: #0b3762;
+  --atom-lb-900: #051b31;
+  --atom-lb-1000: #030e1a;
+
+  /* Cyan */
+  --atom-c-25: #f0fbfd;
+  --atom-c-50: #e9fafd;
+  --atom-c-100: #d2f6fb;
+  --atom-c-200: #a5edf7;
+  --atom-c-300: #79e3f2;
+  --atom-c-400: #4cdaee;
+  --atom-c-500: #1fd1ea;
+  --atom-c-600: #19a7bb;
+  --atom-c-700: #137d8c;
+  --atom-c-800: #0c545e;
+  --atom-c-900: #062a2f;
+  --atom-c-1000: #03171a;
+
+  /* Teal */
+  --atom-t-25: #f2fffd;
+  --atom-t-50: #d9fff9;
+  --atom-t-100: #b2fff2;
+  --atom-t-200: #85f2e0;
+  --atom-t-300: #5ee5cf;
+  --atom-t-400: #3ae0c5;
+  --atom-t-500: #18d4b4;
+  --atom-t-600: #14ad94;
+  --atom-t-700: #108774;
+  --atom-t-800: #0b6153;
+  --atom-t-900: #073b32;
+  --atom-t-1000: #031a16;
+
+  /* Green */
+  --atom-g-25: #f4f9f2;
+  --atom-g-50: #eef9e8;
+  --atom-g-100: #dcf3d1;
+  --atom-g-200: #bae7a3;
+  --atom-g-300: #97dc76;
+  --atom-g-400: #75d048;
+  --atom-g-500: #52c41a;
+  --atom-g-600: #44a115;
+  --atom-g-700: #347d11;
+  --atom-g-800: #26590b;
+  --atom-g-900: #163607;
+  --atom-g-1000: #0a1a03;
+
+  /* Lime */
+  --atom-l-25: #f7faf0;
+  --atom-l-50: #f5fae9;
+  --atom-l-100: #ebf5d2;
+  --atom-l-200: #d8eca5;
+  --atom-l-300: #c4e278;
+  --atom-l-400: #b1d94b;
+  --atom-l-500: #9dcf1e;
+  --atom-l-600: #7ea618;
+  --atom-l-700: #5e7c12;
+  --atom-l-800: #3f530c;
+  --atom-l-900: #1f2906;
+  --atom-l-1000: #131a04;
+
+  /* Yellow */
+  --atom-y-25: #fffef2;
+  --atom-y-50: #fffde6;
+  --atom-y-100: #fffacc;
+  --atom-y-200: #fff59a;
+  --atom-y-300: #fff067;
+  --atom-y-400: #ffeb35;
+  --atom-y-500: #f5de0b;
+  --atom-y-600: #c9b602;
+  --atom-y-700: #9c8c01;
+  --atom-y-800: #6e6301;
+  --atom-y-900: #403a00;
+  --atom-y-1000: #1a1700;
+
+  /* Amber */
+  --atom-a-25: #fff9f2;
+  --atom-a-50: #fff3e6;
+  --atom-a-100: #ffe7cc;
+  --atom-a-200: #ffcf99;
+  --atom-a-300: #ffb866;
+  --atom-a-400: #ffa033;
+  --atom-a-500: #ed8611;
+  --atom-a-600: #d97400;
+  --atom-a-700: #995200;
+  --atom-a-800: #733d00;
+  --atom-a-900: #4d2900;
+  --atom-a-1000: #261400;
+
+  /* Orange */
+  --atom-o-25: #fff6f2;
+  --atom-o-50: #ffeee6;
+  --atom-o-100: #ffdecd;
+  --atom-o-200: #febc9b;
+  --atom-o-300: #fe9a68;
+  --atom-o-400: #fd7836;
+  --atom-o-500: #ec601a;
+  --atom-o-600: #c95216;
+  --atom-o-700: #a64312;
+  --atom-o-800: #82350e;
+  --atom-o-900: #5e260a;
+  --atom-o-1000: #3b1806;
+
+  /* Red */
+  --atom-r-25: #fef4f4;
+  --atom-r-50: #fee8e8;
+  --atom-r-100: #fcd2d2;
+  --atom-r-200: #f9a5a5;
+  --atom-r-300: #f67777;
+  --atom-r-400: #f34a4a;
+  --atom-r-500: #e40d0d;
+  --atom-r-600: #c91830;
+  --atom-r-700: #a31313;
+  --atom-r-800: #7d1010;
+  --atom-r-900: #570b0b;
+  --atom-r-1000: #260505;
+
+  /* Pink */
+  --atom-pk-25: #faf0f5;
+  --atom-pk-50: #fae6f0;
+  --atom-pk-100: #fad4e6;
+  --atom-pk-200: #fac8e0;
+  --atom-pk-300: #fa96c6;
+  --atom-pk-400: #e15a9b;
+  --atom-pk-500: #e12d84;
+  --atom-pk-600: #bf2670;
+  --atom-pk-700: #991f59;
+  --atom-pk-800: #66143c;
+  --atom-pk-900: #330a1e;
+  --atom-pk-1000: #1a050f;
+
+  /* Purple */
+  --atom-pu-25: #f9f2ff;
+  --atom-pu-50: #ecd9ff;
+  --atom-pu-100: #dfbfff;
+  --atom-pu-200: #d2a6ff;
+  --atom-pu-300: #b973ff;
+  --atom-pu-400: #9f40ff;
+  --atom-pu-500: #7e0def;
+  --atom-pu-600: #6a0bc9;
+  --atom-pu-700: #5609a3;
+  --atom-pu-800: #42077d;
+  --atom-pu-900: #2e0557;
+  --atom-pu-1000: #140226;
+
+  /* Indigo */
+  --atom-i-25: #f4f2fc;
+  --atom-i-50: #e9e3fc;
+  --atom-i-100: #d6cafc;
+  --atom-i-200: #b197fc;
+  --atom-i-300: #8b65fc;
+  --atom-i-400: #6532fc;
+  --atom-i-500: #4a17e3;
+  --atom-i-600: #3c12b8;
+  --atom-i-700: #2e0e8c;
+  --atom-i-800: #200a61;
+  --atom-i-900: #120636;
+  --atom-i-1000: #08031a;
+}
+
+/* ============================================
+ * 2. CRYSTAL THEME (Light Mode) - DEFAULT
+ * ============================================ */
+:root,
+[data-theme="crystal"] {
+  /* --- Grey Aliases --- */
+  --atom-grey-quart: var(--atom-grey-25);
+  --atom-grey-half: var(--atom-grey-50);
+  --atom-grey-1: var(--atom-grey-100);
+  --atom-grey-2: var(--atom-grey-200);
+  --atom-grey-3: var(--atom-grey-300);
+  --atom-grey-4: var(--atom-grey-400);
+  --atom-grey-5: var(--atom-grey-500);
+  --atom-grey-6: var(--atom-grey-600);
+  --atom-grey-7: var(--atom-grey-700);
+  --atom-grey-8: var(--atom-grey-800);
+  --atom-grey-9: var(--atom-grey-900);
+  --atom-grey-10: var(--atom-grey-1000);
+
+  /* --- Surface (Backgrounds) --- */
+  --atom-surface-1: var(--atom-white);
+  --atom-surface-2: var(--atom-grey-25);
+  --atom-surface-3: var(--atom-grey-50);
+  --atom-surface-inverse: var(--atom-grey-900);
+
+  /* --- Typography --- */
+  --atom-text-primary: var(--atom-grey-900);
+  --atom-text-secondary: var(--atom-grey-700);
+  --atom-text-tertiary: var(--atom-grey-500);
+  --atom-text-inverse: var(--atom-white);
+
+  /* --- Border --- */
+  --atom-border-primary: #dfdfdf;
+  --atom-border-secondary: var(--atom-grey-half);
+  --atom-border-tertiary: var(--atom-grey-3);
+  --atom-border-input: #cfd1d5;
+
+  /* --- Primary (Brand/Action Color) --- */
+  --atom-primary-main: #5327D7;
+  --atom-primary-tint1: #9D92FF;
+  --atom-primary-tint2: #3A1A9A;
+  --atom-primary-contrast: var(--atom-white);
+  --atom-primary-transparent: rgba(83, 39, 215, 0.05);
+  --atom-primary-shadow: rgba(83, 39, 215, 0.2);
+
+  /* --- Neutral (Grey/Default Buttons) --- */
+  --atom-neutral-one: var(--atom-grey-50);
+  --atom-neutral-two: var(--atom-grey-100);
+  --atom-neutral-three: var(--atom-grey-500);
+  --atom-neutral-four: var(--atom-grey-700);
+  --atom-neutral-icon: var(--atom-grey-600);
+  --atom-neutral-transparent: rgba(0, 0, 0, 0.04);
+  --atom-neutral-shadow: rgba(214, 214, 214, 0.5);
+  --atom-neutral-disabled: var(--atom-grey-100);
+
+  /* --- Success --- */
+  --atom-success-main: var(--atom-g-700);
+  --atom-success-tint1: var(--atom-g-800);
+  --atom-success-tint2: var(--atom-g-900);
+  --atom-success-contrast: var(--atom-white);
+  --atom-success-transparent: rgba(52, 125, 17, 0.05);
+
+  /* --- Warning --- */
+  --atom-warning-main: var(--atom-a-600);
+  --atom-warning-tint1: var(--atom-a-700);
+  --atom-warning-tint2: var(--atom-a-800);
+  --atom-warning-contrast: var(--atom-white);
+  --atom-warning-transparent: rgba(237, 134, 17, 0.05);
+
+  /* --- Error --- */
+  --atom-error-main: var(--atom-r-600);
+  --atom-error-tint1: var(--atom-r-700);
+  --atom-error-tint2: var(--atom-r-800);
+  --atom-error-contrast: var(--atom-white);
+  --atom-error-transparent: rgba(201, 24, 48, 0.05);
+
+  /* --- Action States --- */
+  --atom-action-hover: var(--atom-primary-transparent);
+  --atom-action-hover-secondary: var(--atom-grey-25);
+  --atom-action-selected: rgba(0, 0, 0, 0.05);
+
+  /* --- Shadow --- */
+  --atom-shadow-default: rgba(0, 0, 0, 0.05);
+  --atom-shadow-10: rgba(0, 0, 0, 0.1);
+  --atom-shadow-15: rgba(0, 0, 0, 0.15);
+  --atom-shadow-20: rgba(0, 0, 0, 0.2);
+
+  /* --- Depth (Elevation shadows) --- */
+  --atom-depth-1: 0 1px 2px var(--atom-shadow-default);
+  --atom-depth-2: 0 4px 4px var(--atom-shadow-default);
+  --atom-depth-3: 0 8px 8px var(--atom-shadow-default);
+  --atom-depth-4: 0 16px 16px var(--atom-shadow-default);
+
+  /* --- Halo (Focus rings) --- */
+  --atom-halo-default: rgba(0, 0, 0, 0.05);
+  --atom-halo-primary: rgba(83, 39, 215, 0.2);
+  --atom-halo-success: rgba(52, 125, 17, 0.2);
+  --atom-halo-warning: rgba(237, 134, 17, 0.2);
+  --atom-halo-error: rgba(201, 24, 48, 0.2);
+
+  /* --- Component Specific --- */
+  --atom-scrollbar-fill: rgba(0, 0, 0, 0.25);
+  --atom-slider-bg: rgba(0, 0, 0, 0.25);
+  --atom-button-group-divider: rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+ * 3. OBSIDIAN THEME (Dark Mode)
+ * ============================================ */
+[data-theme="obsidian"] {
+  /* --- Grey Aliases (same mapping) --- */
+  --atom-grey-quart: var(--atom-grey-25);
+  --atom-grey-half: var(--atom-grey-50);
+  --atom-grey-1: var(--atom-grey-100);
+  --atom-grey-2: var(--atom-grey-200);
+  --atom-grey-3: var(--atom-grey-300);
+  --atom-grey-4: var(--atom-grey-400);
+  --atom-grey-5: var(--atom-grey-500);
+  --atom-grey-6: var(--atom-grey-600);
+  --atom-grey-7: var(--atom-grey-700);
+  --atom-grey-8: var(--atom-grey-800);
+  --atom-grey-9: var(--atom-grey-900);
+  --atom-grey-10: var(--atom-grey-1000);
+
+  /* --- Surface (Backgrounds) --- */
+  --atom-surface-1: var(--atom-grey-900);
+  --atom-surface-2: var(--atom-grey-800);
+  --atom-surface-3: var(--atom-grey-700);
+  --atom-surface-inverse: var(--atom-grey-quart);
+
+  /* --- Typography --- */
+  --atom-text-primary: var(--atom-grey-50);
+  --atom-text-secondary: var(--atom-grey-200);
+  --atom-text-tertiary: var(--atom-grey-300);
+  --atom-text-inverse: var(--atom-black);
+
+  /* --- Border --- */
+  --atom-border-primary: #3d3d40;
+  --atom-border-secondary: var(--atom-grey-7);
+  --atom-border-tertiary: var(--atom-grey-8);
+  --atom-border-input: var(--atom-white);
+
+  /* --- Primary (Brand/Action Color) --- */
+  --atom-primary-main: #6959FF;
+  --atom-primary-tint1: #9D92FF;
+  --atom-primary-tint2: #9084FF;
+  --atom-primary-contrast: var(--atom-grey-1000);
+  --atom-primary-transparent: rgba(105, 89, 255, 0.2);
+  --atom-primary-shadow: rgba(105, 89, 255, 0.4);
+
+  /* --- Neutral (Grey/Default Buttons) --- */
+  --atom-neutral-one: var(--atom-grey-700);
+  --atom-neutral-two: var(--atom-grey-600);
+  --atom-neutral-three: var(--atom-grey-500);
+  --atom-neutral-four: var(--atom-white);
+  --atom-neutral-icon: var(--atom-white);
+  --atom-neutral-transparent: rgba(237, 238, 242, 0.1);
+  --atom-neutral-shadow: rgba(214, 214, 214, 0.6);
+  --atom-neutral-disabled: var(--atom-grey-700);
+
+  /* --- Success --- */
+  --atom-success-main: var(--atom-g-400);
+  --atom-success-tint1: var(--atom-g-300);
+  --atom-success-tint2: var(--atom-g-200);
+  --atom-success-contrast: var(--atom-grey-900);
+  --atom-success-transparent: rgba(117, 208, 72, 0.3);
+
+  /* --- Warning --- */
+  --atom-warning-main: var(--atom-a-400);
+  --atom-warning-tint1: var(--atom-a-300);
+  --atom-warning-tint2: var(--atom-a-200);
+  --atom-warning-contrast: var(--atom-a-900);
+  --atom-warning-transparent: rgba(255, 160, 51, 0.2);
+
+  /* --- Error --- */
+  --atom-error-main: var(--atom-r-400);
+  --atom-error-tint1: var(--atom-r-300);
+  --atom-error-tint2: var(--atom-r-200);
+  --atom-error-contrast: var(--atom-grey-1000);
+  --atom-error-transparent: rgba(243, 74, 74, 0.2);
+
+  /* --- Action States --- */
+  --atom-action-hover: rgba(255, 255, 255, 0.1);
+  --atom-action-hover-secondary: var(--atom-white);
+  --atom-action-selected: rgba(255, 255, 255, 0.2);
+
+  /* --- Shadow --- */
+  --atom-shadow-default: rgba(0, 0, 0, 0.5);
+  --atom-shadow-10: rgba(0, 0, 0, 0.55);
+  --atom-shadow-15: rgba(0, 0, 0, 0.6);
+  --atom-shadow-20: rgba(0, 0, 0, 0.65);
+
+  /* --- Depth (Elevation shadows) --- */
+  --atom-depth-1: 0 1px 2px var(--atom-shadow-default);
+  --atom-depth-2: 0 4px 4px var(--atom-shadow-default);
+  --atom-depth-3: 0 8px 8px var(--atom-shadow-default);
+  --atom-depth-4: 0 16px 16px var(--atom-shadow-default);
+
+  /* --- Halo (Focus rings) --- */
+  --atom-halo-default: rgba(255, 255, 255, 0.25);
+  --atom-halo-primary: rgba(105, 89, 255, 0.35);
+  --atom-halo-success: rgba(117, 208, 72, 0.4);
+  --atom-halo-warning: rgba(255, 160, 51, 0.45);
+  --atom-halo-error: rgba(243, 74, 74, 0.4);
+
+  /* --- Component Specific --- */
+  --atom-scrollbar-fill: rgba(255, 255, 255, 0.25);
+  --atom-slider-bg: rgba(0, 0, 0, 0.25);
+  --atom-button-group-divider: rgba(0, 0, 0, 0.3);
+}
+
+/* ============================================
+ * 4. SPACING & TYPOGRAPHY SCALE
+ * ============================================ */
+:root {
+  /* Spacing (8px grid with 4px half step) */
+  --atom-space-half: 4px;
+  --atom-space-1: 8px;
+  --atom-space-2: 16px;
+  --atom-space-3: 24px;
+  --atom-space-4: 32px;
+  --atom-space-5: 40px;
+  --atom-space-6: 48px;
+  --atom-space-7: 56px;
+  --atom-space-8: 64px;
+  --atom-space-9: 72px;
+  --atom-space-10: 80px;
+
+  /* Border Radius */
+  --atom-radius-none: 0;
+  --atom-radius-sm: 4px;
+  --atom-radius-md: 6px;
+  --atom-radius-lg: 8px;
+  --atom-radius-xl: 12px;
+  --atom-radius-2xl: 16px;
+  --atom-radius-full: 9999px;
+
+  /* Typography */
+  --atom-font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --atom-font-size-xs: 12px;
+  --atom-font-size-sm: 14px;
+  --atom-font-size-md: 16px;
+  --atom-font-size-lg: 18px;
+  --atom-font-size-xl: 20px;
+  --atom-font-size-2xl: 24px;
+
+  /* Font Weights */
+  --atom-font-weight-normal: 400;
+  --atom-font-weight-medium: 500;
+  --atom-font-weight-semibold: 600;
+  --atom-font-weight-bold: 700;
+
+  /* Line Heights */
+  --atom-leading-tight: 1.25;
+  --atom-leading-normal: 1.5;
+  --atom-leading-relaxed: 1.75;
+}
+
+/* ============================================
+ * 5. TAILWIND THEME EXTENSION
+ * Makes CSS variables available as Tailwind classes
+ * e.g., bg-atom-surface-1, text-atom-text-secondary
+ * ============================================ */
+@theme {
+  /* Surface (Background) Colors */
+  --color-atom-surface-1: var(--atom-surface-1);
+  --color-atom-surface-2: var(--atom-surface-2);
+  --color-atom-surface-3: var(--atom-surface-3);
+  --color-atom-surface-inverse: var(--atom-surface-inverse);
+
+  /* Text Colors */
+  --color-atom-text-primary: var(--atom-text-primary);
+  --color-atom-text-secondary: var(--atom-text-secondary);
+  --color-atom-text-tertiary: var(--atom-text-tertiary);
+  --color-atom-text-inverse: var(--atom-text-inverse);
+
+  /* Border Colors */
+  --color-atom-border-primary: var(--atom-border-primary);
+  --color-atom-border-secondary: var(--atom-border-secondary);
+  --color-atom-border-tertiary: var(--atom-border-tertiary);
+  --color-atom-border-input: var(--atom-border-input);
+
+  /* Primary (Brand/Action) */
+  --color-atom-primary-main: var(--atom-primary-main);
+  --color-atom-primary-tint1: var(--atom-primary-tint1);
+  --color-atom-primary-tint2: var(--atom-primary-tint2);
+  --color-atom-primary-contrast: var(--atom-primary-contrast);
+  --color-atom-primary-transparent: var(--atom-primary-transparent);
+
+  /* Neutral (Grey/Default) */
+  --color-atom-neutral-one: var(--atom-neutral-one);
+  --color-atom-neutral-two: var(--atom-neutral-two);
+  --color-atom-neutral-three: var(--atom-neutral-three);
+  --color-atom-neutral-four: var(--atom-neutral-four);
+  --color-atom-neutral-icon: var(--atom-neutral-icon);
+  --color-atom-neutral-transparent: var(--atom-neutral-transparent);
+  --color-atom-neutral-disabled: var(--atom-neutral-disabled);
+
+  /* Success */
+  --color-atom-success-main: var(--atom-success-main);
+  --color-atom-success-tint1: var(--atom-success-tint1);
+  --color-atom-success-tint2: var(--atom-success-tint2);
+  --color-atom-success-contrast: var(--atom-success-contrast);
+  --color-atom-success-transparent: var(--atom-success-transparent);
+
+  /* Warning */
+  --color-atom-warning-main: var(--atom-warning-main);
+  --color-atom-warning-tint1: var(--atom-warning-tint1);
+  --color-atom-warning-tint2: var(--atom-warning-tint2);
+  --color-atom-warning-contrast: var(--atom-warning-contrast);
+  --color-atom-warning-transparent: var(--atom-warning-transparent);
+
+  /* Error */
+  --color-atom-error-main: var(--atom-error-main);
+  --color-atom-error-tint1: var(--atom-error-tint1);
+  --color-atom-error-tint2: var(--atom-error-tint2);
+  --color-atom-error-contrast: var(--atom-error-contrast);
+  --color-atom-error-transparent: var(--atom-error-transparent);
+
+  /* Action States */
+  --color-atom-action-hover: var(--atom-action-hover);
+  --color-atom-action-hover-secondary: var(--atom-action-hover-secondary);
+  --color-atom-action-selected: var(--atom-action-selected);
+
+  /* Halo (Focus Rings) */
+  --color-atom-halo-default: var(--atom-halo-default);
+  --color-atom-halo-primary: var(--atom-halo-primary);
+  --color-atom-halo-success: var(--atom-halo-success);
+  --color-atom-halo-warning: var(--atom-halo-warning);
+  --color-atom-halo-error: var(--atom-halo-error);
+
+  /* Shadow Colors */
+  --color-atom-shadow-default: var(--atom-shadow-default);
+  --color-atom-shadow-10: var(--atom-shadow-10);
+  --color-atom-shadow-15: var(--atom-shadow-15);
+  --color-atom-shadow-20: var(--atom-shadow-20);
+
+  /* Depth (Elevation Shadows) */
+  --shadow-atom-depth-1: var(--atom-depth-1);
+  --shadow-atom-depth-2: var(--atom-depth-2);
+  --shadow-atom-depth-3: var(--atom-depth-3);
+  --shadow-atom-depth-4: var(--atom-depth-4);
+
+  /* Border Radius */
+  --radius-atom-none: var(--atom-radius-none);
+  --radius-atom-sm: var(--atom-radius-sm);
+  --radius-atom-md: var(--atom-radius-md);
+  --radius-atom-lg: var(--atom-radius-lg);
+  --radius-atom-xl: var(--atom-radius-xl);
+  --radius-atom-2xl: var(--atom-radius-2xl);
+  --radius-atom-full: var(--atom-radius-full);
+
+  /* Spacing */
+  --spacing-atom-half: var(--atom-space-half);
+  --spacing-atom-1: var(--atom-space-1);
+  --spacing-atom-2: var(--atom-space-2);
+  --spacing-atom-3: var(--atom-space-3);
+  --spacing-atom-4: var(--atom-space-4);
+  --spacing-atom-5: var(--atom-space-5);
+  --spacing-atom-6: var(--atom-space-6);
+  --spacing-atom-7: var(--atom-space-7);
+  --spacing-atom-8: var(--atom-space-8);
+  --spacing-atom-9: var(--atom-space-9);
+  --spacing-atom-10: var(--atom-space-10);
+}
+
+/* ============================================
+ * BASE STYLES
+ * ============================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--atom-font-family);
+  background-color: var(--atom-surface-1);
+  color: var(--atom-text-primary);
+  line-height: var(--atom-leading-normal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

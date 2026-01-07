@@ -21,7 +21,7 @@ export { Button } from './components/Button';
 export type { ButtonProps, ButtonVariant, ButtonSize } from './components/Button';
 
 export { Alert } from './components/Alert';
-export type { AlertProps, AlertIntent, AlertOrientation } from './components/Alert';
+export type { AlertProps, AlertIntent, AlertOrientation, AlertPosition } from './components/Alert';
 
 // ============================================
 // HOOKS

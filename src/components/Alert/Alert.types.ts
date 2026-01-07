@@ -11,9 +11,21 @@ export type AlertIntent = 'default' | 'success' | 'warning' | 'error';
 export type AlertOrientation = 'vertical' | 'horizontal';
 
 /**
+ * Alert position - controls where the alert appears
+ */
+export type AlertPosition = 'inline' | 'top-left' | 'top-right' | 'bottom-left' | 'bottom-right';
+
+/**
  * Alert component props
  */
 export interface AlertProps {
+  /**
+   * Where to display the alert
+   * - 'inline': Renders in normal document flow
+   * - Other values: Fixed position in corners
+   * @default 'inline'
+   */
+  position?: AlertPosition;
   /**
    * The color scheme of the alert
    * @default 'default'
@@ -67,6 +79,12 @@ export interface AlertProps {
    * Auto-dismiss after X seconds (shows progress bar)
    */
   timer?: number;
+
+  /**
+   * Loop the timer animation without dismissing
+   * @default false
+   */
+  loopTimer?: boolean;
 
   /**
    * Secondary (cancel) button label

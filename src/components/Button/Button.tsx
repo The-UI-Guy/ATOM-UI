@@ -40,10 +40,12 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     // These apply to ALL buttons regardless of variant
     // ==========================================
     const baseStyles = [
+      // Font 
+      'font-atom',
       // Layout
       'inline-flex items-center justify-center',
       // Typography
-      'font-medium',
+      'font-atom font-atom-medium',
       // Transitions
       'transition-colors duration-150 ease-in-out',
       // Focus ring (accessibility)
@@ -114,14 +116,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     // ==========================================
     const sizeStyles: Record<string, string> = {
       sm: iconOnly
-        ? 'h-[28px] w-[28px] text-sm'           // 32px square for icon-only
-        : 'h-[28px] px-3 text-sm gap-1.5',  // 32px height
+        ? 'h-[28px] w-[28px] font-atom-medium text-sm'           // 28px square for icon-only
+        : 'h-[28px] px-3 font-atom-medium  text-sm gap-1.5',  // 28px height
       md: iconOnly
-        ? 'h-10 w-10 text-base'        // 40px square for icon-only
-        : 'h-10 px-4 text-sm gap-2',   // 40px height
+        ? 'h-10 w-10 text-base text-sm'        // 40px square for icon-only
+        : 'h-10 px-4 font-atom-medium text-sm gap-2',   // 40px height
       lg: iconOnly
-        ? 'h-12 w-12 text-lg'          // 48px square for icon-only
-        : 'h-12 px-6 text-base gap-2 ', // 48px height
+        ? 'h-12 w-12 font-atom-medium'          // 48px square for icon-only
+        : 'h-12 px-4 text-atom-sm gap-2 ', // 48px height
     };
 
     // ==========================================

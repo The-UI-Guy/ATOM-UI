@@ -41,7 +41,7 @@ const Row = ({ label, description, children }: { label?: string; description?: s
 
 export const Documentation: Story = {
   render: () => (
-    <div style={{ padding: '40px', maxWidth: '900px', fontFamily: 'system-ui, sans-serif' }}>
+    <div style={{ padding: '40px', maxWidth: '900px'}}>
       {/* Header */}
       <div style={{ marginBottom: '40px' }}>
         <h1 style={{ fontSize: '32px', fontWeight: 700, marginBottom: '8px' }}>Button</h1>

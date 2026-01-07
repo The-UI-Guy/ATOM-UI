@@ -4,17 +4,6 @@
  * ============================================
  * ATOM UI DESIGN SYSTEM
  * ============================================
- * 
- * This file defines all design tokens for Atom UI.
- * 
- * Structure:
- * 1. Core Colors - Raw color palette (agnostic, no implied use)
- * 2. Crystal Theme - Light mode (default)
- * 3. Obsidian Theme - Dark mode
- * 4. Spacing Scale
- * 5. Tailwind Theme Extension
- *
- * Users can override any variable to customize their theme.
  */
 
 /* ============================================
@@ -22,10 +11,9 @@
  * ============================================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+
 /* ============================================
  * 1. CORE COLOR PALETTE
- * Raw values from Figma Core Library
- * These are agnostic - no implied use cases
  * ============================================ */
 :root {
   /* Common */
@@ -256,13 +244,13 @@
 
   /* --- Typography --- */
   --atom-text-primary: var(--atom-grey-900);
-  --atom-text-secondary: var(--atom-grey-700);
+  --atom-text-secondary: #444447;
   --atom-text-tertiary: var(--atom-grey-500);
   --atom-text-inverse: var(--atom-white);
 
   /* --- Border --- */
-  --atom-border-primary: #dfdfdf;
-  --atom-border-secondary: var(--atom-grey-half);
+  --atom-border-primary: #E6E6E6;
+  --atom-border-secondary: #BEBFC7;
   --atom-border-tertiary: var(--atom-grey-3);
   --atom-border-input: #cfd1d5;
 
@@ -339,7 +327,6 @@
  * 3. OBSIDIAN THEME (Dark Mode)
  * ============================================ */
 [data-theme="obsidian"] {
-  /* --- Grey Aliases (same mapping) --- */
   --atom-grey-quart: var(--atom-grey-25);
   --atom-grey-half: var(--atom-grey-50);
   --atom-grey-1: var(--atom-grey-100);
@@ -353,25 +340,21 @@
   --atom-grey-9: var(--atom-grey-900);
   --atom-grey-10: var(--atom-grey-1000);
 
-  /* --- Surface (Backgrounds) --- */
   --atom-surface-1: var(--atom-grey-900);
   --atom-surface-2: var(--atom-grey-800);
   --atom-surface-3: var(--atom-grey-700);
   --atom-surface-inverse: var(--atom-grey-quart);
 
-  /* --- Typography --- */
   --atom-text-primary: var(--atom-grey-50);
   --atom-text-secondary: var(--atom-grey-200);
   --atom-text-tertiary: var(--atom-grey-300);
   --atom-text-inverse: var(--atom-black);
 
-  /* --- Border --- */
   --atom-border-primary: #3d3d40;
   --atom-border-secondary: var(--atom-grey-7);
   --atom-border-tertiary: var(--atom-grey-8);
   --atom-border-input: var(--atom-white);
 
-  /* --- Primary (Brand/Action Color) --- */
   --atom-primary-main: #6959FF;
   --atom-primary-tint1: #9D92FF;
   --atom-primary-tint2: #9084FF;
@@ -379,7 +362,6 @@
   --atom-primary-transparent: rgba(105, 89, 255, 0.2);
   --atom-primary-shadow: rgba(105, 89, 255, 0.4);
 
-  /* --- Neutral (Grey/Default Buttons) --- */
   --atom-neutral-one: var(--atom-grey-700);
   --atom-neutral-two: var(--atom-grey-600);
   --atom-neutral-three: var(--atom-grey-500);
@@ -389,52 +371,44 @@
   --atom-neutral-shadow: rgba(214, 214, 214, 0.6);
   --atom-neutral-disabled: var(--atom-grey-700);
 
-  /* --- Success --- */
   --atom-success-main: var(--atom-g-400);
   --atom-success-tint1: var(--atom-g-300);
   --atom-success-tint2: var(--atom-g-200);
   --atom-success-contrast: var(--atom-grey-900);
   --atom-success-transparent: rgba(117, 208, 72, 0.3);
 
-  /* --- Warning --- */
   --atom-warning-main: var(--atom-a-400);
   --atom-warning-tint1: var(--atom-a-300);
   --atom-warning-tint2: var(--atom-a-200);
   --atom-warning-contrast: var(--atom-a-900);
   --atom-warning-transparent: rgba(255, 160, 51, 0.2);
 
-  /* --- Error --- */
   --atom-error-main: var(--atom-r-400);
   --atom-error-tint1: var(--atom-r-300);
   --atom-error-tint2: var(--atom-r-200);
   --atom-error-contrast: var(--atom-grey-1000);
   --atom-error-transparent: rgba(243, 74, 74, 0.2);
 
-  /* --- Action States --- */
   --atom-action-hover: rgba(255, 255, 255, 0.1);
   --atom-action-hover-secondary: var(--atom-white);
   --atom-action-selected: rgba(255, 255, 255, 0.2);
 
-  /* --- Shadow --- */
   --atom-shadow-default: rgba(0, 0, 0, 0.5);
   --atom-shadow-10: rgba(0, 0, 0, 0.55);
   --atom-shadow-15: rgba(0, 0, 0, 0.6);
   --atom-shadow-20: rgba(0, 0, 0, 0.65);
 
-  /* --- Depth (Elevation shadows) --- */
   --atom-depth-1: 0 1px 2px var(--atom-shadow-default);
   --atom-depth-2: 0 4px 4px var(--atom-shadow-default);
   --atom-depth-3: 0 8px 8px var(--atom-shadow-default);
   --atom-depth-4: 0 16px 16px var(--atom-shadow-default);
 
-  /* --- Halo (Focus rings) --- */
   --atom-halo-default: rgba(255, 255, 255, 0.25);
   --atom-halo-primary: rgba(105, 89, 255, 0.35);
   --atom-halo-success: rgba(117, 208, 72, 0.4);
   --atom-halo-warning: rgba(255, 160, 51, 0.45);
   --atom-halo-error: rgba(243, 74, 74, 0.4);
 
-  /* --- Component Specific --- */
   --atom-scrollbar-fill: rgba(255, 255, 255, 0.25);
   --atom-slider-bg: rgba(0, 0, 0, 0.25);
   --atom-button-group-divider: rgba(0, 0, 0, 0.3);
@@ -466,8 +440,10 @@
   --atom-radius-2xl: 32px;
   --atom-radius-full: 9999px;
 
-  /* Typography */
+  /* Typography - Font Family */
   --atom-font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Typography - Font Sizes (BASE VALUES) */
   --atom-font-size-xs: 12px;
   --atom-font-size-sm: 14px;
   --atom-font-size-md: 16px;
@@ -475,13 +451,13 @@
   --atom-font-size-xl: 20px;
   --atom-font-size-2xl: 24px;
 
-  /* Font Weights */
+  /* Typography - Font Weights */
   --atom-font-weight-normal: 400;
   --atom-font-weight-medium: 500;
   --atom-font-weight-semibold: 600;
   --atom-font-weight-bold: 700;
 
-  /* Line Heights */
+  /* Typography - Line Heights */
   --atom-leading-tight: 1.25;
   --atom-leading-normal: 1.5;
   --atom-leading-relaxed: 1.75;
@@ -489,11 +465,31 @@
 
 /* ============================================
  * 5. TAILWIND THEME EXTENSION
- * Makes CSS variables available as Tailwind classes
- * e.g., bg-atom-surface-1, text-atom-text-secondary
  * ============================================ */
 @theme {
-  /* Surface (Background) Colors */
+  /* Font Family → font-atom */
+  --font-family-atom: var(--atom-font-family);
+
+  /* Font Sizes → text-atom-* (hardcoded values) */
+  --font-size-atom-xs: 12px;
+  --font-size-atom-sm: 14px;
+  --font-size-atom-md: 16px;
+  --font-size-atom-lg: 18px;
+  --font-size-atom-xl: 20px;
+  --font-size-atom-2xl: 24px;
+
+  /* Font Weights → font-atom-* */
+  --font-weight-atom-regular: 400;
+  --font-weight-atom-medium: 500;
+  --font-weight-atom-semibold: 600;
+  --font-weight-atom-bold: 700;
+
+  /* Line Heights → leading-atom-* */
+  --line-height-atom-tight: 1.25;
+  --line-height-atom-normal: 1.5;
+  --line-height-atom-relaxed: 1.75;
+
+  /* Surface Colors */
   --color-atom-surface-1: var(--atom-surface-1);
   --color-atom-surface-2: var(--atom-surface-2);
   --color-atom-surface-3: var(--atom-surface-3);
@@ -511,14 +507,14 @@
   --color-atom-border-tertiary: var(--atom-border-tertiary);
   --color-atom-border-input: var(--atom-border-input);
 
-  /* Primary (Brand/Action) */
+  /* Primary */
   --color-atom-primary-main: var(--atom-primary-main);
   --color-atom-primary-tint1: var(--atom-primary-tint1);
   --color-atom-primary-tint2: var(--atom-primary-tint2);
   --color-atom-primary-contrast: var(--atom-primary-contrast);
   --color-atom-primary-transparent: var(--atom-primary-transparent);
 
-  /* Neutral (Grey/Default) */
+  /* Neutral */
   --color-atom-neutral-one: var(--atom-neutral-one);
   --color-atom-neutral-two: var(--atom-neutral-two);
   --color-atom-neutral-three: var(--atom-neutral-three);
@@ -553,7 +549,7 @@
   --color-atom-action-hover-secondary: var(--atom-action-hover-secondary);
   --color-atom-action-selected: var(--atom-action-selected);
 
-  /* Halo (Focus Rings) */
+  /* Halo */
   --color-atom-halo-default: var(--atom-halo-default);
   --color-atom-halo-primary: var(--atom-halo-primary);
   --color-atom-halo-success: var(--atom-halo-success);
@@ -566,7 +562,7 @@
   --color-atom-shadow-15: var(--atom-shadow-15);
   --color-atom-shadow-20: var(--atom-shadow-20);
 
-  /* Depth (Elevation Shadows) */
+  /* Depth Shadows */
   --shadow-atom-depth-1: var(--atom-depth-1);
   --shadow-atom-depth-2: var(--atom-depth-2);
   --shadow-atom-depth-3: var(--atom-depth-3);

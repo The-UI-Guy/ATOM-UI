@@ -1,13 +1,85 @@
-[11:42:42.047] [INFO] [36mInitializing Storybook[39m
-[11:42:42.225] [DEBUG] Getting package.json info for /Users/mileswalker/atom-ui/package.json...
-[11:42:42.226] [DEBUG] Getting CLI versions from NPM for storybook...
-[11:42:42.226] [DEBUG] Executing command: npm info storybook version
-[11:42:43.281] [INFO] Adding Storybook version 10.1.11 to your project
-[11:42:43.283] [ERROR] Unable to initialize Storybook in this directory.
+[10:35:02.994] [INFO] storybook v10.1.11
+[10:35:03.665] [ERROR] [38;2;241;97;97mSB_CORE-SERVER_0007 (MainFileEvaluationError): Storybook couldn't evaluate your [33m.storybook/main.ts[39m file.
 
-Storybook couldn't detect a supported framework or configuration for your project. Make sure you're inside a framework project (e.g., React, Vue, Svelte, Angular, Next.js) and that its dependencies are installed.
+Original error:
+[37mError: 
+You installed esbuild for another platform than the one you're currently using.
+This won't work because esbuild is written with native code and needs to
+install a platform-specific binary executable.
 
-Tips:
-- Run init in an empty directory or create a new framework app first.
-- If this directory contains unrelated files, try a new directory for Storybook.
-[11:42:43.286] [INFO] Storybook collects completely anonymous usage telemetry. We use it to shape Storybook's roadmap and prioritize features. You can learn more, including how to opt out, at https://storybook.js.org/telemetry
+Specifically the "@esbuild/darwin-x64" package is present but this platform
+needs the "@esbuild/darwin-arm64" package instead. People often get into this
+situation by installing esbuild with npm running inside of Rosetta 2 and then
+trying to use it with node running outside of Rosetta 2, or vice versa (Rosetta
+2 is Apple's on-the-fly x86_64-to-arm64 translation service).
+
+If you are installing with npm, you can try ensuring that both npm and node are
+not running under Rosetta 2 and then reinstalling esbuild. This likely involves
+changing how you installed npm and/or node. For example, installing node with
+the universal installer here should work: https://nodejs.org/en/download/. Or
+you could consider using yarn instead of npm which has built-in support for
+installing a package on multiple platforms simultaneously.
+
+If you are installing with yarn, you can try listing both "arm64" and "x64"
+in your ".yarnrc.yml" file using the "supportedArchitectures" feature:
+https://yarnpkg.com/configuration/yarnrc/#supportedArchitectures
+Keep in mind that this means multiple copies of esbuild will be present.
+
+Another alternative is to use the "esbuild-wasm" package instead, which works
+the same way on all platforms. But it comes with a heavy performance cost and
+can sometimes be 10x slower than the "esbuild" package, so you may also not
+want to do that.
+
+    at generateBinPath (/node_modules/esbuild/lib/main.js:1739:17)
+    at esbuildCommandAndArgs (/node_modules/esbuild/lib/main.js:1820:33)
+    at ensureServiceIsRunning (/node_modules/esbuild/lib/main.js:1977:25)
+    at transform (/node_modules/esbuild/lib/main.js:1878:37)
+    at load (file:///node_modules/storybook/dist/bin/loader.js:74:113)
+    at async nextLoad (node:internal/modules/esm/hooks:748:22)
+    at async Hooks.load (node:internal/modules/esm/hooks:385:20)
+    at async MessagePort.handleMessage (node:internal/modules/esm/worker:199:18)[39m[39m
+    at loadMainConfig (file://./node_modules/storybook/dist/_node-chunks/chunk-Q4DOC7HF.js:11701:11)
+    at async buildDevStandalone (file://./node_modules/storybook/dist/core-server/index.js:7149:16)
+    at async withTelemetry (file://./node_modules/storybook/dist/_node-chunks/chunk-2372JZ52.js:209:12)
+    at async dev (file://./node_modules/storybook/dist/bin/core.js:2734:3)
+    at async _Command.<anonymous> (file://./node_modules/storybook/dist/bin/core.js:2801:92)
+[10:35:03.669] [WARN] Broken build, fix the error above.
+You may need to refresh the browser.
+[10:35:03.671] [WARN]   Failed to load preset: "/Users/miles.walker/Documents/ATOM-UI/.storybook/main.ts"
+[10:35:03.671] [ERROR] [38;2;241;97;97mError: 
+You installed esbuild for another platform than the one you're currently using.
+This won't work because esbuild is written with native code and needs to
+install a platform-specific binary executable.
+
+Specifically the "@esbuild/darwin-x64" package is present but this platform
+needs the "@esbuild/darwin-arm64" package instead. People often get into this
+situation by installing esbuild with npm running inside of Rosetta 2 and then
+trying to use it with node running outside of Rosetta 2, or vice versa (Rosetta
+2 is Apple's on-the-fly x86_64-to-arm64 translation service).
+
+If you are installing with npm, you can try ensuring that both npm and node are
+not running under Rosetta 2 and then reinstalling esbuild. This likely involves
+changing how you installed npm and/or node. For example, installing node with
+the universal installer here should work: https://nodejs.org/en/download/. Or
+you could consider using yarn instead of npm which has built-in support for
+installing a package on multiple platforms simultaneously.
+
+If you are installing with yarn, you can try listing both "arm64" and "x64"
+in your ".yarnrc.yml" file using the "supportedArchitectures" feature:
+https://yarnpkg.com/configuration/yarnrc/#supportedArchitectures
+Keep in mind that this means multiple copies of esbuild will be present.
+
+Another alternative is to use the "esbuild-wasm" package instead, which works
+the same way on all platforms. But it comes with a heavy performance cost and
+can sometimes be 10x slower than the "esbuild" package, so you may also not
+want to do that.
+[39m
+    at generateBinPath (./node_modules/esbuild/lib/main.js:1739:17)
+    at esbuildCommandAndArgs (./node_modules/esbuild/lib/main.js:1820:33)
+    at ensureServiceIsRunning (./node_modules/esbuild/lib/main.js:1977:25)
+    at transform (./node_modules/esbuild/lib/main.js:1878:37)
+    at load (file://./node_modules/storybook/dist/bin/loader.js:74:113)
+    at async nextLoad (node:internal/modules/esm/hooks:748:22)
+    at async Hooks.load (node:internal/modules/esm/hooks:385:20)
+    at async MessagePort.handleMessage (node:internal/modules/esm/worker:199:18)
+[10:35:09.821] [PROMPT] Would you like to send anonymous crash reports to improve Storybook and fix bugs faster? {"choice":false}

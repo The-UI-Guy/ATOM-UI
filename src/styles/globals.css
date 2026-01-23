@@ -312,7 +312,7 @@
 
   /* --- Halo (Focus rings) --- */
   --atom-halo-default: rgba(0, 0, 0, 0.05);
-  --atom-halo-primary: rgba(83, 39, 215, 0.2);
+  --atom-halo-primary: rgba(83, 39, 215, 0.1);
   --atom-halo-success: rgba(52, 125, 17, 0.2);
   --atom-halo-warning: rgba(237, 134, 17, 0.2);
   --atom-halo-error: rgba(201, 24, 48, 0.2);

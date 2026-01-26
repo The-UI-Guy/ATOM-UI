@@ -31,7 +31,7 @@ export const Badge = ({
   // INTENT STYLES
   // ==========================================
   const intentStyles: Record<BadgeIntent, string> = {
-    neutral: 'bg-atom-neutral-three text-white',
+    neutral: 'bg-atom-neutral-one text-atom-text-tertiary border border-atom-border-secondary',
     primary: 'bg-atom-primary-main text-atom-primary-contrast',
     success: 'bg-atom-success-main text-atom-success-contrast',
     warning: 'bg-atom-warning-main text-atom-warning-contrast',
@@ -45,7 +45,7 @@ export const Badge = ({
     return (
       <span
         className={`
-          inline-block w-2.5 h-2.5 rounded-full
+          inline-block w-1 h-1 rounded-full
           ${intentStyles[intent]}
           ${className}
         `}
@@ -71,7 +71,7 @@ export const Badge = ({
     <span
       className={`
         inline-flex items-center justify-center
-        min-w-5 h-5 px-1.5
+        min-w-3 h-[20px] px-1
         text-xs font-atom-semibold
         rounded-full
         ${intentStyles[intent]}

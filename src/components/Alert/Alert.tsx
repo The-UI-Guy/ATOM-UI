@@ -190,7 +190,7 @@ export const Alert = ({
         ${isPositioned ? '' : 'relative'} overflow-hidden
         flex flex-row ${isHorizontal ? 'items-center' : 'items-start'}
         border rounded-atom-lg shadow-atom-depth-4
-        p-atom-2 gap-3 font-atom
+        p-atom-2 gap-1 font-atom
         ${intentStyles[intent].container}
         ${className}
       `}
@@ -209,7 +209,7 @@ export const Alert = ({
       {/* Content Area - Flexible middle section */}
       <div className={`flex flex-1 min-w-0 ${isHorizontal ? 'flex-row items-center gap-4' : 'flex-col gap-1'}`}>
         {/* Title & Description */}
-        <div className={`flex ${isHorizontal ? 'flex-row items-center gap-2 flex-1' : 'flex-col gap-1'}`}>
+        <div className={`flex ${isHorizontal ? 'flex-row items-center gap-1 flex-1' : 'flex-col'}`}>
           <h4 className="font-atom-semibold text-atom-text-primary text-sm">
             {title}
           </h4>
@@ -227,7 +227,7 @@ export const Alert = ({
 
         {/* Button Group */}
         {(cancelLabel || confirmLabel) && (
-          <div className={`flex flex-row gap-2 ${isHorizontal ? '' : 'mt-3'}`}>
+          <div className={`flex flex-row gap-1 ${isHorizontal ? '' : 'mt-0'}`}>
             {cancelLabel && (
               <Button
                 variant="outline"
@@ -263,7 +263,7 @@ export const Alert = ({
 
       {/* Timer Progress Bar */}
       {timer && (
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-atom-neutral-one">
+        <div className="absolute bottom-0 left-0 right-0 h-[3px] bg-atom-neutral-one">
           <div
             className={`h-full ${intentStyles[intent].progress}`}
             style={{

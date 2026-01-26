@@ -33,13 +33,13 @@ export const Radio = ({
     label: string;
   }> = {
     sm: {
-      box: 'w-3.5 h-3.5',        // 14px
-      innerRing: 'w-2 h-2',  // 6px inner white circle
+      box: 'w-2 h-2',        // 14px
+      innerRing: 'w-1 h-1',  // 6px inner white circle
       label: 'text-sm',
     },
     md: {
-      box: 'w-5 h-5',            // 20px
-      innerRing: 'w-3 h-3',      // 8px inner white circle
+      box: 'w-[20px] h-[20px]',            // 20px
+      innerRing: 'w-[12px] h-[12px]',      // 8px inner white circle
       label: 'text-sm',
     },
   };

@@ -75,12 +75,12 @@ export const Avatar = ({
     md: {
       container: 'w-atom-4 h-atom-4',    // 32px
       text: 'text-sm',           // 14px
-      iconSize: 28,
+      iconSize: 20,
     },
     lg: {
       container: 'w-atom-5 h-atom-5',    // 40px
       text: 'text-lg',          // 24px
-      iconSize: 40,
+      iconSize: 30,
     },
   };
 

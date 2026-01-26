@@ -33,12 +33,12 @@ export const Checkbox = ({
     label: string;
   }> = {
     sm: {
-      box: 'w-3.5 h-3.5',        // 14px
+      box: 'w-2 h-2',        // 14px
       iconSize: 12,
       label: 'text-sm',
     },
     md: {
-      box: 'w-5 h-5',            // 20px
+      box: 'w-[20px] h-[20px]',            // 20px
       iconSize: 18,
       label: 'text-sm',
     },

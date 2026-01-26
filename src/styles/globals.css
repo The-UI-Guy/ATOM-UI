@@ -467,6 +467,9 @@
  * 5. TAILWIND THEME EXTENSION
  * ============================================ */
 @theme {
+
+    /* Base spacing unit (8px grid) */
+  --spacing: 8px;
   /* Font Family → font-atom */
   --font-family-atom: var(--atom-font-family);
 

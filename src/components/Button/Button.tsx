@@ -73,7 +73,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
 
       outline: [
         // Background
-        'bg-transparent',
+        'bg-atom-surface-1',
         'hover:bg-atom-neutral-one',
         // Border
         'border border-atom-border-primary',
@@ -117,13 +117,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     const sizeStyles: Record<string, string> = {
       sm: iconOnly
         ? 'h-[28px] w-[28px] font-atom-medium text-sm'           // 28px square for icon-only
-        : 'h-[28px] px-3 font-atom-medium  text-sm gap-1.5',  // 28px height
+        : 'h-[28px] px-2 font-atom-medium  text-sm gap-1.5',  // 28px height
       md: iconOnly
-        ? 'h-10 w-10 text-base text-sm'        // 40px square for icon-only
-        : 'h-10 px-4 font-atom-medium text-sm gap-2',   // 40px height
+        ? 'h-5 w-5 text-base text-sm'        // 40px square for icon-only
+        : 'h-5 px-2 font-atom-medium text-sm gap-2',   // 40px height
       lg: iconOnly
-        ? 'h-12 w-12 font-atom-medium'          // 48px square for icon-only
-        : 'h-12 px-4 text-atom-sm gap-2 ', // 48px height
+        ? 'h-6 w-6 font-atom-medium'          // 48px square for icon-only
+        : 'h-6 px-3 text-atom-sm gap-2 ', // 48px height
     };
 
     // ==========================================

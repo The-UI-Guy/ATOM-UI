@@ -49,7 +49,7 @@ export const Tag = ({
     paddingX: string;
     fontSize: string;
     iconSize: number;
-    gap: string;
+    gap: number;
     checkboxSize: number;
     counterSize: string;
   }> = {

@@ -1,6 +1,6 @@
 import React from 'react';
 import * as RadixTabs from '@radix-ui/react-tabs';
-import type { TabsProps, TabPanelProps, TabItem } from './Tabs.types';
+import type { TabsProps, TabPanelProps, TabItem, TabsSize } from './Tabs.types';
 
 /**
  * Tabs Component
@@ -35,9 +35,44 @@ export const Tabs = ({
   defaultValue,
   onValueChange,
   variant = 'segment',
+  size = 'md',
   orientation = 'horizontal',
   className = '',
 }: TabsProps) => {
+
+  // ==========================================
+  // SIZE CONFIGURATION
+  // ==========================================
+  const sizeConfig: Record<TabsSize, {
+    fontSize: number;
+    paddingX: number;
+    paddingY: number;
+    iconSize: number;
+    counterSize: number;
+    counterPadding: number;
+    gap: number;
+  }> = {
+    sm: {
+      fontSize: 12,
+      paddingX: 12,
+      paddingY: 6,
+      iconSize: 16,
+      counterSize: 16,
+      counterPadding: 4,
+      gap: 6,
+    },
+    md: {
+      fontSize: 14,
+      paddingX: 16,
+      paddingY: 8,
+      iconSize: 20,
+      counterSize: 20,
+      counterPadding: 6,
+      gap: 8,
+    },
+  };
+
+  const config = sizeConfig[size];
 
   // ==========================================
   // CONTAINER STYLES
@@ -64,10 +99,10 @@ export const Tabs = ({
   // ==========================================
   // TAB TRIGGER STYLES
   // ==========================================
-  const getTriggerClasses = (item: TabItem, isSelected: boolean): string => {
+  const getTriggerClasses = (isSelected: boolean): string => {
     const baseClasses = `
       inline-flex items-center justify-center
-      font-atom font-atom-medium text-sm
+      font-atom font-atom-medium
       transition-all duration-150
       cursor-pointer
       disabled:cursor-not-allowed disabled:opacity-50
@@ -76,7 +111,6 @@ export const Tabs = ({
     if (variant === 'segment') {
       return `
         ${baseClasses}
-        px-2 py-1
         rounded-atom-md
         ${isSelected 
           ? 'bg-atom-surface-1 text-atom-text-primary shadow-sm' 
@@ -86,21 +120,8 @@ export const Tabs = ({
     }
 
     // Underline variant
-    if (orientation === 'horizontal') {
-      return `
-        ${baseClasses}
-        px-0.5 py-1
-        ${isSelected 
-          ? 'text-atom-primary-main' 
-          : 'text-atom-text-secondary hover:text-atom-text-primary'
-        }
-      `;
-    }
-
-    // Vertical underline
     return `
       ${baseClasses}
-      px-1.5 py-1
       ${isSelected 
         ? 'text-atom-primary-main' 
         : 'text-atom-text-secondary hover:text-atom-text-primary'
@@ -109,10 +130,22 @@ export const Tabs = ({
   };
 
   const getTriggerStyles = (isSelected: boolean): React.CSSProperties => {
-    if (variant !== 'underline') return {};
+    const baseStyles: React.CSSProperties = {
+      fontSize: config.fontSize,
+      paddingLeft: config.paddingX,
+      paddingRight: config.paddingX,
+      paddingTop: config.paddingY,
+      paddingBottom: config.paddingY,
+      gap: config.gap,
+    };
+
+    if (variant !== 'underline') {
+      return baseStyles;
+    }
 
     if (orientation === 'horizontal') {
       return {
+        ...baseStyles,
         borderBottom: isSelected 
           ? '2px solid var(--atom-primary-main)' 
           : '2px solid transparent',
@@ -122,6 +155,7 @@ export const Tabs = ({
 
     // Vertical underline
     return {
+      ...baseStyles,
       borderLeft: isSelected 
         ? '2px solid var(--atom-primary-main)' 
         : '2px solid transparent',
@@ -148,19 +182,29 @@ export const Tabs = ({
   // ==========================================
   // RENDER TAB CONTENT
   // ==========================================
-  const renderTabContent = (item: TabItem) => {
-    const iconSize = 20;
+  const renderTabContent = (item: TabItem, isSelected: boolean) => {
     const hasLabel = !!item.label;
     const hasIcon = !!item.icon;
     const hasCounter = item.counter !== undefined;
 
+    // Icon color based on variant and selection state
+    const getIconColor = (): string => {
+      if (variant === 'underline' && isSelected) {
+        return 'var(--atom-primary-main)';
+      }
+      return 'var(--atom-neutral-icon)';
+    };
+
     return (
       <>
         {hasIcon && (
-          <span className="flex items-center justify-center">
+          <span 
+            className="flex items-center justify-center"
+            style={{ color: getIconColor() }}
+          >
             {React.isValidElement(item.icon)
               ? React.cloneElement(item.icon as React.ReactElement<{ size?: number }>, { 
-                  size: iconSize,
+                  size: config.iconSize,
                 })
               : item.icon
             }
@@ -169,12 +213,13 @@ export const Tabs = ({
         {hasLabel && <span>{item.label}</span>}
         {hasCounter && (
           <span 
-            className="inline-flex items-center justify-center rounded-full text-xs font-atom-medium bg-atom-neutral-two text-atom-text-primary"
+            className="inline-flex items-center justify-center rounded-full font-atom-medium bg-atom-neutral-two text-atom-text-primary"
             style={{
-              minWidth: 20,
-              height: 20,
-              paddingLeft: 6,
-              paddingRight: 6,
+              minWidth: config.counterSize,
+              height: config.counterSize,
+              paddingLeft: config.counterPadding,
+              paddingRight: config.counterPadding,
+              fontSize: config.fontSize - 2,
             }}
           >
             {item.counter}
@@ -201,20 +246,20 @@ export const Tabs = ({
           ...getListBorderStyles(),
         }}
       >
-        {items.map((item) => (
-          <RadixTabs.Trigger
-            key={item.value}
-            value={item.value}
-            disabled={item.disabled}
-            className={getTriggerClasses(item, value === item.value || (!value && defaultValue === item.value))}
-            style={{
-              ...getTriggerStyles(value === item.value || (!value && defaultValue === item.value)),
-              gap: 8,
-            }}
-          >
-            {renderTabContent(item)}
-          </RadixTabs.Trigger>
-        ))}
+        {items.map((item) => {
+          const isSelected = value === item.value || (!value && (defaultValue || items[0]?.value) === item.value);
+          return (
+            <RadixTabs.Trigger
+              key={item.value}
+              value={item.value}
+              disabled={item.disabled}
+              className={getTriggerClasses(isSelected)}
+              style={getTriggerStyles(isSelected)}
+            >
+              {renderTabContent(item, isSelected)}
+            </RadixTabs.Trigger>
+          );
+        })}
       </RadixTabs.List>
     </RadixTabs.Root>
   );

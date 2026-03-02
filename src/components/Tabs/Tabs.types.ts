@@ -11,6 +11,11 @@ export type TabsVariant = 'segment' | 'underline';
 export type TabsOrientation = 'horizontal' | 'vertical';
 
 /**
+ * Tab size variants
+ */
+export type TabsSize = 'sm' | 'md';
+
+/**
  * Individual tab item configuration
  */
 export interface TabItem {
@@ -69,6 +74,12 @@ export interface TabsProps {
    * @default 'segment'
    */
   variant?: TabsVariant;
+
+  /**
+   * Size variant
+   * @default 'md'
+   */
+  size?: TabsSize;
 
   /**
    * Orientation

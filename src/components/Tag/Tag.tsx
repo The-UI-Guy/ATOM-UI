@@ -1,6 +1,6 @@
 import React from 'react';
 import { X, Check } from '@phosphor-icons/react';
-import type { TagProps, TagSize, TagVariant } from './Tag.types';
+import type { TagProps, TagSize } from './Tag.types';
 
 /**
  * Tag Component

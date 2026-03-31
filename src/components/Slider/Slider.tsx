@@ -114,11 +114,6 @@ export const Slider = ({
     }
   };
 
-  // Check if handle should show halo
-  const shouldShowHalo = (handle: 'single' | 'min' | 'max') => {
-    return !disabled && (dragging === handle || hovering === handle);
-  };
-
   return (
     <div 
       className={`

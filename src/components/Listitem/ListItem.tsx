@@ -1,192 +1,124 @@
-import React, { useState } from 'react';
-import type { ListItemProps, ListItemSize } from './ListItem.types';
+import React from 'react';
+import { CaretRight } from '@phosphor-icons/react';
+import type { ListItemProps } from './ListItem.types';
 
 /**
  * ListItem Component
- * 
- * A standardized list item for use in menus, popovers, selects, and lists.
- * Provides consistent styling with flexible start/end slots.
- * 
+ *
+ * A single interactive item used inside a PopMenu. Supports a start icon,
+ * label, keyboard shortcut, end icon / submenu indicator, and an active state.
+ *
  * @example
- * // Basic
- * <ListItem onClick={handleClick}>Option 1</ListItem>
- * 
+ * <ListItem icon={<Rocket />} shortcut="⌘⇧D">Deploy</ListItem>
+ *
  * @example
- * // With icon and shortcut
- * <ListItem 
- *   itemStart={<FolderIcon />}
- *   endText="⌘⇧D"
- *   itemEnd={<FolderIcon />}
- * >
- *   List Item
- * </ListItem>
- * 
+ * <ListItem icon={<TrashSimple />} shortcut="DEL">Delete</ListItem>
+ *
  * @example
- * // With checkbox
- * <ListItem itemStart={<Checkbox checked={checked} onCheckedChange={setChecked} />}>
- *   Checkbox Item
- * </ListItem>
+ * <ListItem icon={<Folder />} hasSubmenu>Open in…</ListItem>
  */
 export const ListItem = ({
   children,
-  itemStart,
-  itemEnd,
-  endText,
-  size = 'md',
-  selected = false,
+  icon,
+  shortcut,
+  endIcon,
+  hasSubmenu = false,
+  active = false,
   disabled = false,
   onClick,
   className = '',
 }: ListItemProps) => {
-  const [isHovered, setIsHovered] = useState(false);
 
   // ==========================================
-  // SIZE CONFIGURATION
-  // ==========================================
-  const sizeConfig: Record<ListItemSize, {
-    minHeight: number;
-    paddingX: number;
-    paddingY: number;
-    fontSize: number;
-    gap: number;
-    iconSize: number;
-  }> = {
-    sm: {
-      minHeight: 36,
-      paddingX: 12,
-      paddingY: 8,
-      fontSize: 14,
-      gap: 8,
-      iconSize: 18,
-    },
-    md: {
-      minHeight: 44,
-      paddingX: 12,
-      paddingY: 10,
-      fontSize: 14,
-      gap: 12,
-      iconSize: 20,
-    },
-  };
-
-  const config = sizeConfig[size];
-
-  // ==========================================
-  // EVENT HANDLERS
+  // HANDLERS
   // ==========================================
   const handleClick = () => {
-    if (!disabled && onClick) {
-      onClick();
-    }
+    if (!disabled && onClick) onClick();
   };
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (!disabled && onClick && (e.key === 'Enter' || e.key === ' ')) {
+    if (!disabled && (e.key === 'Enter' || e.key === ' ')) {
       e.preventDefault();
-      onClick();
+      handleClick();
     }
   };
 
   // ==========================================
   // STYLES
+  //
+  // Note: padding is set via inline style (not Tailwind) to avoid the project's
+  // 8px Tailwind base-unit (px-1 = 8px, px-2 = 16px), keeping exact Figma values.
   // ==========================================
-  const isHighlighted = selected || isHovered;
+  const stateClasses = active
+    ? 'bg-atom-action-selected'
+    : disabled
+      ? ''
+      : 'hover:bg-atom-action-hover focus-visible:bg-atom-action-hover';
 
-  const containerStyles: React.CSSProperties = {
-    display: 'flex',
-    alignItems: 'center',
-    minHeight: config.minHeight,
-    paddingLeft: config.paddingX,
-    paddingRight: config.paddingX,
-    paddingTop: config.paddingY,
-    paddingBottom: config.paddingY,
-    gap: config.gap,
-    fontSize: config.fontSize,
-    borderRadius: 'var(--atom-radius-sm)',
-    cursor: disabled ? 'not-allowed' : onClick ? 'pointer' : 'default',
-    transition: 'background-color 100ms ease',
-    outline: 'none',
-    backgroundColor: isHighlighted && !disabled 
-      ? 'var(--atom-primary-tint1)' 
-      : 'transparent',
-    opacity: disabled ? 0.5 : 1,
-  };
-
-  // ==========================================
-  // RENDER ICON WRAPPER
-  // ==========================================
-  const renderIconSlot = (content: ReactNode) => {
-    if (!content) return null;
-
-    // Clone icons to apply size
-    if (React.isValidElement(content)) {
-      const element = content as React.ReactElement<{ size?: number }>;
-      
-      // Check if it's an icon (has size prop capability)
-      if (typeof element.type !== 'string') {
-        return (
-          <span 
-            className="flex items-center justify-center flex-shrink-0"
-            style={{ color: 'var(--atom-neutral-icon)' }}
-          >
-            {React.cloneElement(element, { size: config.iconSize })}
-          </span>
-        );
-      }
-    }
-
-    // For non-icons (checkbox, radio, avatar), render as-is
-    return (
-      <span className="flex items-center justify-center flex-shrink-0">
-        {content}
-      </span>
-    );
-  };
-
-  // ==========================================
-  // RENDER
-  // ==========================================
   return (
     <div
-      role={onClick ? 'option' : undefined}
-      aria-selected={selected}
+      role="menuitem"
+      tabIndex={disabled ? -1 : 0}
       aria-disabled={disabled}
-      tabIndex={disabled ? -1 : onClick ? 0 : undefined}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-      className={`font-atom ${className}`}
-      style={containerStyles}
+      className={`
+        flex items-center w-full
+        font-atom font-atom-medium text-atom-sm tracking-[0.07px] text-atom-text-primary
+        focus:outline-none transition-colors duration-150
+        ${disabled ? 'cursor-not-allowed opacity-50' : 'cursor-pointer'}
+        ${stateClasses}
+        ${className}
+      `}
+      style={{
+        padding: 'var(--atom-space-1)',
+        gap: 'var(--atom-space-1)',
+        borderRadius: 'var(--atom-radius-md)',
+      }}
     >
-      {/* Start Slot */}
-      {renderIconSlot(itemStart)}
+      {/* Start Icon */}
+      {icon && (
+        <span
+          className="flex items-center justify-center flex-shrink-0 text-atom-neutral-icon"
+          style={{ width: 20, height: 20 }}
+        >
+          {React.isValidElement(icon)
+            ? React.cloneElement(icon as React.ReactElement<{ size?: number }>, { size: 16 })
+            : icon}
+        </span>
+      )}
 
-      {/* Main Content */}
-      <span 
-        className="flex-1"
-        style={{ 
-          color: disabled ? 'var(--atom-text-tertiary)' : 'var(--atom-text-primary)',
-        }}
+      {/* Label */}
+      <span
+        className="flex-1 text-left whitespace-nowrap overflow-hidden text-ellipsis"
+        style={{ fontSize: 'var(--atom-font-size-sm)' }}
       >
         {children}
       </span>
 
-      {/* End Text (shortcuts, etc.) */}
-      {endText && (
-        <span 
-          className="flex-shrink-0"
-          style={{ 
-            color: 'var(--atom-text-tertiary)',
-            fontSize: config.fontSize - 2,
-          }}
+      {/* Shortcut */}
+      {shortcut && (
+        <span
+          className="font-atom font-atom-regular tracking-[0.07px] flex-shrink-0 text-atom-text-tertiary"
+          style={{ fontSize: 'var(--atom-font-size-sm)' }}
         >
-          {endText}
+          {shortcut}
         </span>
       )}
 
-      {/* End Slot */}
-      {renderIconSlot(itemEnd)}
+      {/* End Icon / Submenu Indicator */}
+      {(endIcon || hasSubmenu) && (
+        <span
+          className="flex items-center justify-center flex-shrink-0 text-atom-neutral-icon"
+          style={{ width: 20, height: 20 }}
+        >
+          {endIcon
+            ? React.isValidElement(endIcon)
+              ? React.cloneElement(endIcon as React.ReactElement<{ size?: number }>, { size: 16 })
+              : endIcon
+            : <CaretRight size={14} />}
+        </span>
+      )}
     </div>
   );
 };

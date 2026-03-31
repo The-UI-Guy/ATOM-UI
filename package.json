@@ -1,5 +1,5 @@
 {
-  "name": "atom-ui",
+  "name": "@atom_ui/atom-ui",
   "version": "0.1.0",
   "description": "A themeable React UI Component Library",
   "author": "Miles Walker",
@@ -19,9 +19,9 @@
   "types": "dist/types/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/types/index.d.ts",
       "import": "./dist/atom-ui.es.js",
-      "require": "./dist/atom-ui.umd.js",
-      "types": "./dist/types/index.d.ts"
+      "require": "./dist/atom-ui.umd.js"
     },
     "./styles": {
       "import": "./dist/styles/globals.css",
@@ -38,8 +38,8 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build && npm run build:styles",
-    "build:styles": "cp -r src/styles dist/",
+    "build": "vite build && tsc -p tsconfig.build.json && npm run build:styles",
+    "build:styles": "mkdir -p dist/styles && cp dist/atom-ui.css dist/styles/globals.css",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "clean": "rm -rf dist node_modules/.vite",

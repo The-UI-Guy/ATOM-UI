@@ -85,7 +85,7 @@ export const Checkbox = ({
     
     ${checked 
       ? 'bg-atom-primary-main border-atom-primary-tint2 text-white' 
-      : 'bg-atom-surface-1 border-atom-border-tertiary'
+      : 'bg-atom-surface-1 border-atom-border-secondary'
     }
     
     ${!disabled && !checked && `

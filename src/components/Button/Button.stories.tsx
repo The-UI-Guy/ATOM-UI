@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Heart, ShoppingCart, ArrowRight, Plus, MagnifyingGlass, Trash } from '@phosphor-icons/react';
 import { Button } from './Button';
+import { StoryPage, StoryHeader, Section, PropsTable, Row } from '../../stories/StoryComponents';
 
 const meta: Meta<typeof Button> = {
   title: 'Components/Button',
@@ -13,42 +14,13 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// Section wrapper component for consistent styling
-const Section = ({ title, description, children }: { title: string; description?: string; children: React.ReactNode }) => (
-  <div style={{ marginBottom: '48px' }}>
-    <h2 style={{ fontSize: '20px', fontWeight: 600, marginBottom: '8px', color: '#111' }}>{title}</h2>
-    {description && <p style={{ fontSize: '14px', color: '#666', marginBottom: '16px' }}>{description}</p>}
-    <div style={{ padding: '24px', background: '#fafafa', borderRadius: '8px' }}>
-      {children}
-    </div>
-  </div>
-);
-
-// Row wrapper for displaying items horizontally
-const Row = ({ label, description, children }: { label?: string; description?: string; children: React.ReactNode }) => (
-  <div style={{ display: 'flex', alignItems: 'center', gap: '24px', marginBottom: '16px' }}>
-    {label && (
-      <div style={{ width: '120px', flexShrink: 0 }}>
-        <strong style={{ fontSize: '14px' }}>{label}</strong>
-        {description && <div style={{ fontSize: '12px', color: '#666' }}>{description}</div>}
-      </div>
-    )}
-    <div style={{ display: 'flex', gap: '12px', alignItems: 'center', flexWrap: 'wrap' }}>
-      {children}
-    </div>
-  </div>
-);
-
 export const Documentation: Story = {
   render: () => (
-    <div style={{ padding: '40px', maxWidth: '900px'}}>
-      {/* Header */}
-      <div style={{ marginBottom: '40px' }}>
-        <h1 style={{ fontSize: '32px', fontWeight: 700, marginBottom: '8px' }}>Button</h1>
-        <p style={{ fontSize: '16px', color: '#666' }}>
-          The Button component is used to trigger actions or events. It supports multiple variants, sizes, and icon configurations.
-        </p>
-      </div>
+    <StoryPage>
+      <StoryHeader
+        title="Button"
+        description="The Button component is used to trigger actions or events. It supports multiple variants, sizes, and icon configurations."
+      />
 
       {/* Overview */}
       <Section title="Overview" description="All button variants shown in small, medium, and large sizes.">
@@ -72,7 +44,7 @@ export const Documentation: Story = {
           <Button variant="destructive" size="md">Delete</Button>
           <Button variant="destructive" size="lg">Delete</Button>
         </Row>
-        <div style={{ marginTop: '16px', paddingTop: '16px', borderTop: '1px solid #eee', fontSize: '12px', color: '#999' }}>
+        <div style={{ marginTop: '16px', paddingTop: '16px', borderTop: '1px solid var(--atom-border-primary)', fontSize: '12px', color: 'var(--atom-text-tertiary)' }}>
           Sizes: <strong>Small (28px)</strong>, <strong>Medium (40px)</strong>, <strong>Large (48px)</strong>
         </div>
       </Section>
@@ -82,22 +54,22 @@ export const Documentation: Story = {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           <div>
             <div style={{ marginBottom: '8px', fontSize: '14px', fontWeight: 500 }}>Primary</div>
-            <div style={{ fontSize: '13px', color: '#666', marginBottom: '12px' }}>Use for the main call-to-action on a page.</div>
+            <div style={{ fontSize: '13px', color: 'var(--atom-text-secondary)', marginBottom: '12px' }}>Use for the main call-to-action on a page.</div>
             <Button variant="primary">Primary Button</Button>
           </div>
           <div>
             <div style={{ marginBottom: '8px', fontSize: '14px', fontWeight: 500 }}>Outline</div>
-            <div style={{ fontSize: '13px', color: '#666', marginBottom: '12px' }}>Use for secondary actions or when you need less visual emphasis.</div>
+            <div style={{ fontSize: '13px', color: 'var(--atom-text-secondary)', marginBottom: '12px' }}>Use for secondary actions or when you need less visual emphasis.</div>
             <Button variant="outline">Outline Button</Button>
           </div>
           <div>
             <div style={{ marginBottom: '8px', fontSize: '14px', fontWeight: 500 }}>Text</div>
-            <div style={{ fontSize: '13px', color: '#666', marginBottom: '12px' }}>Use for tertiary actions or link-like buttons.</div>
+            <div style={{ fontSize: '13px', color: 'var(--atom-text-secondary)', marginBottom: '12px' }}>Use for tertiary actions or link-like buttons.</div>
             <Button variant="text">Text Button</Button>
           </div>
           <div>
             <div style={{ marginBottom: '8px', fontSize: '14px', fontWeight: 500 }}>Destructive</div>
-            <div style={{ fontSize: '13px', color: '#666', marginBottom: '12px' }}>Use for dangerous or irreversible actions like delete.</div>
+            <div style={{ fontSize: '13px', color: 'var(--atom-text-secondary)', marginBottom: '12px' }}>Use for dangerous or irreversible actions like delete.</div>
             <Button variant="destructive">Delete</Button>
           </div>
         </div>
@@ -170,7 +142,7 @@ export const Documentation: Story = {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           <div>
             <div style={{ marginBottom: '12px', fontSize: '14px', fontWeight: 500 }}>Disabled</div>
-            <div style={{ fontSize: '13px', color: '#666', marginBottom: '12px' }}>Disabled buttons cannot be clicked and have reduced opacity.</div>
+            <div style={{ fontSize: '13px', color: 'var(--atom-text-secondary)', marginBottom: '12px' }}>Disabled buttons cannot be clicked and have reduced opacity.</div>
             <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
               <Button variant="primary" disabled>Primary</Button>
               <Button variant="outline" disabled>Outline</Button>
@@ -180,7 +152,7 @@ export const Documentation: Story = {
           </div>
           <div>
             <div style={{ marginBottom: '12px', fontSize: '14px', fontWeight: 500 }}>Loading</div>
-            <div style={{ fontSize: '13px', color: '#666', marginBottom: '12px' }}>Loading buttons show a spinner and are automatically disabled.</div>
+            <div style={{ fontSize: '13px', color: 'var(--atom-text-secondary)', marginBottom: '12px' }}>Loading buttons show a spinner and are automatically disabled.</div>
             <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
               <Button variant="primary" loading>Primary</Button>
               <Button variant="outline" loading>Outline</Button>
@@ -193,61 +165,16 @@ export const Documentation: Story = {
 
       {/* API Reference */}
       <Section title="API Reference">
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px' }}>
-          <thead>
-            <tr style={{ borderBottom: '2px solid #e0e0e0', textAlign: 'left' }}>
-              <th style={{ padding: '12px 16px 12px 0', fontWeight: 600 }}>Prop</th>
-              <th style={{ padding: '12px 16px 12px 0', fontWeight: 600 }}>Type</th>
-              <th style={{ padding: '12px 16px 12px 0', fontWeight: 600 }}>Default</th>
-              <th style={{ padding: '12px 0', fontWeight: 600 }}>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>variant</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>'primary' | 'outline' | 'text' | 'destructive'</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>'primary'</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>The visual style of the button</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>size</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>'sm' | 'md' | 'lg'</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>'md'</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>The size of the button</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>iconStart</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>ReactNode</td>
-              <td style={{ padding: '12px 16px 12px 0' }}>-</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Icon to display before the text</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>iconEnd</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>ReactNode</td>
-              <td style={{ padding: '12px 16px 12px 0' }}>-</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Icon to display after the text</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>iconOnly</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>boolean</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>false</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Renders as a square icon button</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>loading</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>boolean</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>false</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Shows a loading spinner</td>
-            </tr>
-            <tr>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>disabled</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>boolean</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>false</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Disables the button</td>
-            </tr>
-          </tbody>
-        </table>
+        <PropsTable rows={[
+          ['variant', "'primary' | 'outline' | 'text' | 'destructive'", "'primary'", 'The visual style of the button'],
+          ['size', "'sm' | 'md' | 'lg'", "'md'", 'The size of the button'],
+          ['iconStart', 'ReactNode', '-', 'Icon to display before the text'],
+          ['iconEnd', 'ReactNode', '-', 'Icon to display after the text'],
+          ['iconOnly', 'boolean', 'false', 'Renders as a square icon button'],
+          ['loading', 'boolean', 'false', 'Shows a loading spinner'],
+          ['disabled', 'boolean', 'false', 'Disables the button'],
+        ]} />
       </Section>
-    </div>
+    </StoryPage>
   ),
 };

@@ -1,0 +1,10 @@
+src/
+.storybook/
+node_modules/
+*.stories.tsx
+*.test.tsx
+*.spec.tsx
+tsconfig*.json
+vite.config.ts
+postcss.config.js
+.DS_Store

@@ -1,4 +1,3 @@
-import React from 'react';
 import { User } from '@phosphor-icons/react';
 import type { AvatarProps, AvatarSize, AvatarShape } from './Avatar.types';
 import { Badge } from '../Badge/Badge';

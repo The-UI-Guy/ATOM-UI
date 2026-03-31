@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { TextAlignLeft, TextAlignCenter, TextAlignRight, List, GridFour, Rows } from '@phosphor-icons/react';
 import { ButtonGroup } from './ButtonGroup';
 import { Button } from '../Button';
+import { StoryPage, StoryHeader, Section, PropsTable } from '../../stories/StoryComponents';
 
 const meta: Meta<typeof ButtonGroup> = {
   title: 'Components/ButtonGroup',
@@ -15,40 +16,29 @@ const meta: Meta<typeof ButtonGroup> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// Section wrapper component for consistent styling
-const Section = ({ title, description, children }: { title: string; description?: string; children: React.ReactNode }) => (
-  <div style={{ marginBottom: '48px' }}>
-    <h2 style={{ fontSize: '20px', fontWeight: 600, marginBottom: '8px', color: '#111' }}>{title}</h2>
-    {description && <p style={{ fontSize: '14px', color: '#666', marginBottom: '16px' }}>{description}</p>}
-    <div style={{ padding: '24px', background: '#fafafa', borderRadius: '8px' }}>
-      {children}
-    </div>
-  </div>
-);
-
 // Interactive demo with selection state
 const SelectableIconGroupDemo = () => {
   const [selected, setSelected] = useState('list');
   return (
     <ButtonGroup>
-      <Button 
-        variant="outline" 
+      <Button
+        variant="outline"
         iconOnly
         onClick={() => setSelected('list')}
         className={selected === 'list' ? 'bg-atom-neutral-one' : ''}
       >
         <List />
       </Button>
-      <Button 
-        variant="outline" 
+      <Button
+        variant="outline"
         iconOnly
         onClick={() => setSelected('grid')}
         className={selected === 'grid' ? 'bg-atom-neutral-one' : ''}
       >
         <GridFour />
       </Button>
-      <Button 
-        variant="outline" 
+      <Button
+        variant="outline"
         iconOnly
         onClick={() => setSelected('rows')}
         className={selected === 'rows' ? 'bg-atom-neutral-one' : ''}
@@ -63,22 +53,22 @@ const SelectableTextGroupDemo = () => {
   const [selected, setSelected] = useState('week');
   return (
     <ButtonGroup>
-      <Button 
-        variant="outline" 
+      <Button
+        variant="outline"
         onClick={() => setSelected('day')}
         className={selected === 'day' ? 'bg-atom-neutral-one' : ''}
       >
         Day
       </Button>
-      <Button 
-        variant="outline" 
+      <Button
+        variant="outline"
         onClick={() => setSelected('week')}
         className={selected === 'week' ? 'bg-atom-neutral-one' : ''}
       >
         Week
       </Button>
-      <Button 
-        variant="outline" 
+      <Button
+        variant="outline"
         onClick={() => setSelected('month')}
         className={selected === 'month' ? 'bg-atom-neutral-one' : ''}
       >
@@ -93,15 +83,11 @@ export const Documentation: Story = {
     layout: 'fullscreen',
   },
   render: () => (
-    <div style={{ padding: '40px', maxWidth: '900px' }}>
-      {/* Header */}
-      <div style={{ marginBottom: '40px' }}>
-        <h1 style={{ fontSize: '32px', fontWeight: 700, marginBottom: '8px' }}>ButtonGroup</h1>
-        <p style={{ fontSize: '16px', color: '#666' }}>
-          A wrapper that groups Button components together with seamless styling. 
-          Buttons retain their own sizing - ButtonGroup only modifies borders and radius.
-        </p>
-      </div>
+    <StoryPage>
+      <StoryHeader
+        title="ButtonGroup"
+        description="A wrapper that groups Button components together with seamless styling. Buttons retain their own sizing - ButtonGroup only modifies borders and radius."
+      />
 
       {/* Interactive Demo */}
       <Section title="Interactive Demo" description="Click to select an option.">
@@ -156,7 +142,7 @@ export const Documentation: Story = {
       <Section title="Sizes" description="Buttons retain their size - pass size prop to each Button.">
         <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', alignItems: 'flex-start' }}>
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Small (sm)</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Small (sm)</div>
             <ButtonGroup>
               <Button variant="outline" size="sm">Button</Button>
               <Button variant="outline" size="sm">Button</Button>
@@ -164,7 +150,7 @@ export const Documentation: Story = {
             </ButtonGroup>
           </div>
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Medium (md)</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Medium (md)</div>
             <ButtonGroup>
               <Button variant="outline" size="md">Button</Button>
               <Button variant="outline" size="md">Button</Button>
@@ -172,7 +158,7 @@ export const Documentation: Story = {
             </ButtonGroup>
           </div>
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Large (lg)</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Large (lg)</div>
             <ButtonGroup>
               <Button variant="outline" size="lg">Button</Button>
               <Button variant="outline" size="lg">Button</Button>
@@ -207,31 +193,11 @@ export const Documentation: Story = {
 
       {/* API Reference */}
       <Section title="API Reference">
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px' }}>
-          <thead>
-            <tr style={{ borderBottom: '2px solid #e0e0e0', textAlign: 'left' }}>
-              <th style={{ padding: '12px 16px 12px 0', fontWeight: 600 }}>Prop</th>
-              <th style={{ padding: '12px 16px 12px 0', fontWeight: 600 }}>Type</th>
-              <th style={{ padding: '12px 16px 12px 0', fontWeight: 600 }}>Default</th>
-              <th style={{ padding: '12px 0', fontWeight: 600 }}>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>children</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>ReactNode</td>
-              <td style={{ padding: '12px 16px 12px 0' }}>required</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Button components to group</td>
-            </tr>
-            <tr>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>className</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>string</td>
-              <td style={{ padding: '12px 16px 12px 0' }}>''</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Additional CSS classes</td>
-            </tr>
-          </tbody>
-        </table>
+        <PropsTable rows={[
+          ['children', 'ReactNode', 'required', 'Button components to group'],
+          ['className', 'string', "''", 'Additional CSS classes'],
+        ]} />
       </Section>
-    </div>
+    </StoryPage>
   ),
 };

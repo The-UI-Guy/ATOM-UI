@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Info, CheckCircle, Warning, XCircle, X } from '@phosphor-icons/react';
 import { Button } from '../Button';
-import type { AlertProps, AlertIntent, AlertPosition } from './Alert.types';
+import type { AlertProps, AlertIntent } from './Alert.types';
 
 /**
  * Get the default icon based on intent
@@ -80,9 +80,9 @@ export const Alert = ({
   // INTENT STYLES
   // Controls colors based on alert type
   // ==========================================
-  const intentStyles: Record<AlertIntent, { 
-    container: string; 
-    icon: string; 
+  const intentStyles: Record<AlertIntent, {
+    container: string;
+    icon: string;
     progress: string;
     buttonBg: string;
     buttonHover: string;
@@ -92,7 +92,7 @@ export const Alert = ({
       container: 'bg-atom-surface-1 border-atom-border-secondary',
       icon: 'text-atom-text-secondary',
       progress: 'bg-atom-primary-main',
-      buttonBg: '', // Uses default primary button
+      buttonBg: '',
       buttonHover: '',
       buttonBorder: '',
     },
@@ -116,7 +116,7 @@ export const Alert = ({
       container: 'bg-atom-surface-1 border-atom-error-main',
       icon: 'text-atom-error-main',
       progress: 'bg-atom-error-main',
-      buttonBg: '', // Uses destructive button variant
+      buttonBg: '',
       buttonHover: '',
       buttonBorder: '',
     },
@@ -166,9 +166,9 @@ export const Alert = ({
     }
     // Success and warning use primary variant with intent-colored background and border
     if (intent === 'success' || intent === 'warning') {
-      return { 
-        variant: 'primary' as const, 
-        className: `${intentStyles[intent].buttonBg} ${intentStyles[intent].buttonHover} ${intentStyles[intent].buttonBorder}` 
+      return {
+        variant: 'primary' as const,
+        className: `${intentStyles[intent].buttonBg} ${intentStyles[intent].buttonHover} ${intentStyles[intent].buttonBorder}`
       };
     }
     // Default uses standard primary

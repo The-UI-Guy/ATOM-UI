@@ -84,7 +84,7 @@ export const Radio = ({
           
           ${checked 
             ? 'bg-atom-primary-main' 
-            : 'bg-atom-surface-1 border border-atom-border-tertiary'
+            : 'bg-atom-surface-1 border border-atom-border-secondary'
           }
           
           ${!disabled && !checked && `

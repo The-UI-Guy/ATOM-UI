@@ -1,59 +1,21 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
-/**
- * ListItem size variants
- */
-export type ListItemSize = 'sm' | 'md';
-
-/**
- * ListItem component props
- */
 export interface ListItemProps {
-  /**
-   * Main content/label
-   */
+  /** Label text for the menu item */
   children: ReactNode;
-
-  /**
-   * Start slot - checkbox, radio, avatar, icon, etc.
-   */
-  itemStart?: ReactNode;
-
-  /**
-   * End slot - checkbox, radio, avatar, icon, etc.
-   */
-  itemEnd?: ReactNode;
-
-  /**
-   * End text - for shortcuts, counts, etc.
-   */
-  endText?: string;
-
-  /**
-   * Size variant
-   * @default 'md'
-   */
-  size?: ListItemSize;
-
-  /**
-   * Whether the item is selected/active
-   * @default false
-   */
-  selected?: boolean;
-
-  /**
-   * Whether the item is disabled
-   * @default false
-   */
+  /** Icon displayed at the start of the item */
+  icon?: ReactNode;
+  /** Keyboard shortcut label (e.g. "⌘⇧H") */
+  shortcut?: string;
+  /** Icon displayed at the end of the item */
+  endIcon?: ReactNode;
+  /** Shows a caret-right to indicate a submenu is available */
+  hasSubmenu?: boolean;
+  /** Active/selected state — renders with a dark background and white text */
+  active?: boolean;
+  /** Disabled state */
   disabled?: boolean;
-
-  /**
-   * Click handler
-   */
+  /** Click handler */
   onClick?: () => void;
-
-  /**
-   * Additional class
-   */
   className?: string;
 }

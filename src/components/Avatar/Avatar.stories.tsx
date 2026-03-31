@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Avatar } from './Avatar';
+import { StoryPage, StoryHeader, Section, PropsTable } from '../../stories/StoryComponents';
 
 const meta: Meta<typeof Avatar> = {
   title: 'Components/Avatar',
@@ -12,17 +13,6 @@ const meta: Meta<typeof Avatar> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// Section wrapper component for consistent styling
-const Section = ({ title, description, children }: { title: string; description?: string; children: React.ReactNode }) => (
-  <div style={{ marginBottom: '48px' }}>
-    <h2 style={{ fontSize: '20px', fontWeight: 600, marginBottom: '8px', color: '#111' }}>{title}</h2>
-    {description && <p style={{ fontSize: '14px', color: '#666', marginBottom: '16px' }}>{description}</p>}
-    <div style={{ padding: '24px', background: '#fafafa', borderRadius: '8px' }}>
-      {children}
-    </div>
-  </div>
-);
-
 // Sample images for demos
 const sampleImages = {
   male: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=face',
@@ -34,38 +24,35 @@ export const Documentation: Story = {
     layout: 'fullscreen',
   },
   render: () => (
-    <div style={{ padding: '40px', maxWidth: '900px' }}>
-      {/* Header */}
-      <div style={{ marginBottom: '40px' }}>
-        <h1 style={{ fontSize: '32px', fontWeight: 700, marginBottom: '8px' }}>Avatar</h1>
-        <p style={{ fontSize: '16px', color: '#666' }}>
-          The Avatar component displays a user representation as an image, initials, or icon. It supports multiple sizes and shapes.
-        </p>
-      </div>
+    <StoryPage>
+      <StoryHeader
+        title="Avatar"
+        description="The Avatar component displays a user representation as an image, initials, or icon. It supports multiple sizes and shapes."
+      />
 
       {/* Overview Grid - Matching the Figma layout */}
       <Section title="Overview" description="All avatar variants organized by size, type, and shape.">
         <table style={{ borderCollapse: 'separate', borderSpacing: '24px' }}>
           <thead>
             <tr>
-              <th style={{ fontSize: '12px', color: '#666', fontWeight: 500, textAlign: 'left', paddingBottom: '8px' }}>Size</th>
-              <th colSpan={3} style={{ fontSize: '12px', color: '#666', fontWeight: 500, textAlign: 'center', paddingBottom: '8px' }}>Round</th>
-              <th colSpan={3} style={{ fontSize: '12px', color: '#666', fontWeight: 500, textAlign: 'center', paddingBottom: '8px' }}>Square</th>
+              <th style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', fontWeight: 500, textAlign: 'left', paddingBottom: '8px' }}>Size</th>
+              <th colSpan={3} style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', fontWeight: 500, textAlign: 'center', paddingBottom: '8px' }}>Round</th>
+              <th colSpan={3} style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', fontWeight: 500, textAlign: 'center', paddingBottom: '8px' }}>Square</th>
             </tr>
             <tr>
               <th></th>
-              <th style={{ fontSize: '11px', color: '#999', fontWeight: 400, textAlign: 'center' }}>Text</th>
-              <th style={{ fontSize: '11px', color: '#999', fontWeight: 400, textAlign: 'center' }}>Icon</th>
-              <th style={{ fontSize: '11px', color: '#999', fontWeight: 400, textAlign: 'center' }}>Image</th>
-              <th style={{ fontSize: '11px', color: '#999', fontWeight: 400, textAlign: 'center' }}>Text</th>
-              <th style={{ fontSize: '11px', color: '#999', fontWeight: 400, textAlign: 'center' }}>Icon</th>
-              <th style={{ fontSize: '11px', color: '#999', fontWeight: 400, textAlign: 'center' }}>Image</th>
+              <th style={{ fontSize: '11px', color: 'var(--atom-text-tertiary)', fontWeight: 400, textAlign: 'center' }}>Text</th>
+              <th style={{ fontSize: '11px', color: 'var(--atom-text-tertiary)', fontWeight: 400, textAlign: 'center' }}>Icon</th>
+              <th style={{ fontSize: '11px', color: 'var(--atom-text-tertiary)', fontWeight: 400, textAlign: 'center' }}>Image</th>
+              <th style={{ fontSize: '11px', color: 'var(--atom-text-tertiary)', fontWeight: 400, textAlign: 'center' }}>Text</th>
+              <th style={{ fontSize: '11px', color: 'var(--atom-text-tertiary)', fontWeight: 400, textAlign: 'center' }}>Icon</th>
+              <th style={{ fontSize: '11px', color: 'var(--atom-text-tertiary)', fontWeight: 400, textAlign: 'center' }}>Image</th>
             </tr>
           </thead>
           <tbody>
             {/* Large */}
             <tr>
-              <td style={{ fontSize: '13px', color: '#666', fontWeight: 500 }}>lg</td>
+              <td style={{ fontSize: '13px', color: 'var(--atom-text-secondary)', fontWeight: 500 }}>lg</td>
               <td style={{ textAlign: 'center' }}><Avatar type="text" size="lg" shape="round"  name="Millicent Bullstrode" /></td>
               <td style={{ textAlign: 'center' }}><Avatar type="icon" size="lg" shape="round" /></td>
               <td style={{ textAlign: 'center' }}><Avatar type="image" size="lg" shape="round" src={sampleImages.male} alt="User" /></td>
@@ -75,7 +62,7 @@ export const Documentation: Story = {
             </tr>
             {/* Medium */}
             <tr>
-              <td style={{ fontSize: '13px', color: '#666', fontWeight: 500 }}>md</td>
+              <td style={{ fontSize: '13px', color: 'var(--atom-text-secondary)', fontWeight: 500 }}>md</td>
               <td style={{ textAlign: 'center' }}><Avatar type="text" size="md" shape="round" name="Millicent Bullstrode"/></td>
               <td style={{ textAlign: 'center' }}><Avatar type="icon" size="md" shape="round" /></td>
               <td style={{ textAlign: 'center' }}><Avatar type="image" size="md" shape="round" src={sampleImages.female} alt="User" /></td>
@@ -85,7 +72,7 @@ export const Documentation: Story = {
             </tr>
             {/* Small */}
             <tr>
-              <td style={{ fontSize: '13px', color: '#666', fontWeight: 500 }}>sm</td>
+              <td style={{ fontSize: '13px', color: 'var(--atom-text-secondary)', fontWeight: 500 }}>sm</td>
               <td style={{ textAlign: 'center' }}><Avatar type="text" size="sm" shape="round" name="Millicent Bullstrode" /></td>
               <td style={{ textAlign: 'center' }}><Avatar type="icon" size="sm" shape="round" /></td>
               <td style={{ textAlign: 'center' }}><Avatar type="image" size="sm" shape="round" src={sampleImages.female} alt="User" /></td>
@@ -95,7 +82,7 @@ export const Documentation: Story = {
             </tr>
             {/* Extra Small */}
             <tr>
-              <td style={{ fontSize: '13px', color: '#666', fontWeight: 500 }}>xs</td>
+              <td style={{ fontSize: '13px', color: 'var(--atom-text-secondary)', fontWeight: 500 }}>xs</td>
               <td style={{ textAlign: 'center' }}><Avatar type="text" size="xs" shape="round" name="Millicent Bullstrode" /></td>
               <td style={{ textAlign: 'center' }}><Avatar type="icon" size="xs" shape="round" /></td>
               <td style={{ textAlign: 'center' }}><Avatar type="image" size="xs" shape="round" src={sampleImages.female} alt="User" /></td>
@@ -113,17 +100,17 @@ export const Documentation: Story = {
           <div style={{ textAlign: 'center' }}>
             <div style={{ marginBottom: '12px', fontSize: '13px', fontWeight: 500 }}>Image</div>
             <Avatar type="image" size="lg" src={sampleImages.male} alt="John Doe" />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>User photo</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>User photo</div>
           </div>
           <div style={{ textAlign: 'center' }}>
             <div style={{ marginBottom: '12px', fontSize: '13px', fontWeight: 500 }}>Text</div>
             <Avatar type="text" size="lg" name="John Doe" />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>Initials from name</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>Initials from name</div>
           </div>
           <div style={{ textAlign: 'center' }}>
             <div style={{ marginBottom: '12px', fontSize: '13px', fontWeight: 500 }}>Icon</div>
             <Avatar type="icon" size="lg" />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>Default user icon</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>Default user icon</div>
           </div>
         </div>
       </Section>
@@ -133,19 +120,19 @@ export const Documentation: Story = {
         <div style={{ display: 'flex', gap: '32px', alignItems: 'flex-end' }}>
           <div style={{ textAlign: 'center' }}>
             <Avatar type="text" size="lg" name="Large Size" />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>lg (40px)</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>lg (40px)</div>
           </div>
           <div style={{ textAlign: 'center' }}>
             <Avatar type="text" size="md" name="Medium Size" />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>md (32px)</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>md (32px)</div>
           </div>
           <div style={{ textAlign: 'center' }}>
             <Avatar type="text" size="sm" name="Small" />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>sm (24px)</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>sm (24px)</div>
           </div>
           <div style={{ textAlign: 'center' }}>
             <Avatar type="text" size="xs" name="XSmall" />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>xs (16px)</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>xs (16px)</div>
           </div>
         </div>
       </Section>
@@ -177,19 +164,20 @@ export const Documentation: Story = {
         <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
           <div style={{ textAlign: 'center' }}>
             <Avatar type="text" size="md" name="John Dillinger" />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>"John" → J</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>"John" → J</div>
           </div>
           <div style={{ textAlign: 'center' }}>
             <Avatar type="text" size="md" name="John Doe" />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>"John Doe" → JD</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>"John Doe" → JD</div>
           </div>
           <div style={{ textAlign: 'center' }}>
             <Avatar type="text" size="md" name="John Middle Doe" />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>"John Middle Doe" → JD</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>"John Middle Doe" → JD</div>
           </div>
         </div>
       </Section>
-         {/* With Badge */}
+
+      {/* With Badge */}
       <Section title="With Badge" description="Avatars can display a badge for status indicators or notification counts.">
         <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
           {/* Dot badges */}
@@ -226,53 +214,53 @@ export const Documentation: Story = {
         </div>
       </Section>
 
-          {/* Custom Colors */}
+      {/* Custom Colors */}
       <Section title="Custom Colors" description="Use className to override default colors with any Tailwind classes.">
         <div style={{ display: 'flex', gap: '24px', alignItems: 'center', flexWrap: 'wrap' }}>
           <div style={{ textAlign: 'center' }}>
-            <Avatar 
-              type="text" 
-              size="lg" 
-              name="Abi Dabi" 
+            <Avatar
+              type="text"
+              size="lg"
+              name="Abi Dabi"
               className="bg-green-100 text-green-600 border-green-500"
             />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>Green</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>Green</div>
           </div>
           <div style={{ textAlign: 'center' }}>
-            <Avatar 
-              type="text" 
-              size="lg" 
-              name="Cody Dabi" 
+            <Avatar
+              type="text"
+              size="lg"
+              name="Cody Dabi"
               className="bg-amber-100 text-amber-600 border-amber-500"
             />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>Amber</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>Amber</div>
           </div>
           <div style={{ textAlign: 'center' }}>
-            <Avatar 
-              type="text" 
-              size="lg" 
-              name="Eve Dabi" 
+            <Avatar
+              type="text"
+              size="lg"
+              name="Eve Dabi"
               className="bg-red-100 text-red-600 border-red-500"
             />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>Red</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>Red</div>
           </div>
           <div style={{ textAlign: 'center' }}>
-            <Avatar 
-              type="text" 
-              size="lg" 
-              name="Gabe Habi" 
+            <Avatar
+              type="text"
+              size="lg"
+              name="Gabe Habi"
               className="bg-blue-100 text-blue-600 border-blue-500"
             />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>Blue</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>Blue</div>
           </div>
           <div style={{ textAlign: 'center' }}>
-            <Avatar 
-              type="text" 
-              size="lg" 
-              name="Ivy Jabi" 
+            <Avatar
+              type="text"
+              size="lg"
+              name="Ivy Jabi"
               className="bg-pink-100 text-pink-600 border-pink-500"
             />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>Pink</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>Pink</div>
           </div>
         </div>
       </Section>
@@ -289,67 +277,17 @@ export const Documentation: Story = {
 
       {/* API Reference */}
       <Section title="API Reference">
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px' }}>
-          <thead>
-            <tr style={{ borderBottom: '2px solid #e0e0e0', textAlign: 'left' }}>
-              <th style={{ padding: '12px 16px 12px 0', fontWeight: 600 }}>Prop</th>
-              <th style={{ padding: '12px 16px 12px 0', fontWeight: 600 }}>Type</th>
-              <th style={{ padding: '12px 16px 12px 0', fontWeight: 600 }}>Default</th>
-              <th style={{ padding: '12px 0', fontWeight: 600 }}>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>type</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>'image' | 'text' | 'icon'</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>'icon'</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Content type to display</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>size</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>'xs' | 'sm' | 'md' | 'lg'</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>'md'</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Avatar size</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>shape</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>'round' | 'square'</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>'round'</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Avatar shape</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>src</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>string</td>
-              <td style={{ padding: '12px 16px 12px 0' }}>-</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Image URL (for type="image")</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>alt</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>string</td>
-              <td style={{ padding: '12px 16px 12px 0' }}>-</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Alt text for image</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>initials</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>string</td>
-              <td style={{ padding: '12px 16px 12px 0' }}>-</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Text initials (for type="text")</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>name</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>string</td>
-              <td style={{ padding: '12px 16px 12px 0' }}>-</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>User name (auto-generates initials)</td>
-            </tr>
-            <tr>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>icon</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>ReactNode</td>
-              <td style={{ padding: '12px 16px 12px 0' }}>User icon</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Custom icon (for type="icon")</td>
-            </tr>
-          </tbody>
-        </table>
+        <PropsTable rows={[
+          ['type', "'image' | 'text' | 'icon'", "'icon'", 'Content type to display'],
+          ['size', "'xs' | 'sm' | 'md' | 'lg'", "'md'", 'Avatar size'],
+          ['shape', "'round' | 'square'", "'round'", 'Avatar shape'],
+          ['src', 'string', '-', 'Image URL (for type="image")'],
+          ['alt', 'string', '-', 'Alt text for image'],
+          ['initials', 'string', '-', 'Text initials (for type="text")'],
+          ['name', 'string', '-', 'User name (auto-generates initials)'],
+          ['icon', 'ReactNode', 'User icon', 'Custom icon (for type="icon")'],
+        ]} />
       </Section>
-    </div>
+    </StoryPage>
   ),
 };

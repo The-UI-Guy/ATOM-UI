@@ -1,49 +1,57 @@
-/*
- * ============================================
- * ATOM UI - Main Entry Point
- * ============================================
- * 
- * This file exports everything from the library.
- * When users write: import { Button } from 'atom-ui'
- * They're importing from this file.
- */
-
-// Import and export styles
-// Users need to import this in their app: import 'atom-ui/styles'
+// Styles — consumers must also import: import 'atom-ui/styles.css'
 import './styles/globals.css';
 
-// ============================================
-// COMPONENTS
-// Export components as we build them
-// ============================================
+// Components
+export { Alert } from './components/Alert';
+export type { AlertProps, AlertIntent, AlertOrientation, AlertPosition } from './components/Alert';
 
-// Example (uncomment when Button is created):
-// export { Button } from './components/Button';
-// export type { ButtonProps } from './components/Button';
+export { Avatar } from './components/Avatar';
+export type { AvatarProps, AvatarType, AvatarSize, AvatarShape } from './components/Avatar';
 
-// ============================================
-// HOOKS
-// Export any custom hooks
-// ============================================
+export { Badge } from './components/Badge';
+export type { BadgeProps, BadgeIntent, BadgeType } from './components/Badge';
 
-// Example:
-// export { useTheme } from './hooks/useTheme';
+export { Button } from './components/Button';
+export type { ButtonProps, ButtonVariant, ButtonSize } from './components/Button';
 
-// ============================================
-// UTILITIES
-// Export utility functions
-// ============================================
+export { ButtonGroup } from './components/ButtonGroup';
+export type { ButtonGroupProps } from './components/ButtonGroup';
 
-// Example:
-// export { cn } from './utils/cn';
+export { Checkbox } from './components/Checkbox';
+export type { CheckboxProps, CheckboxSize } from './components/Checkbox';
 
-// ============================================
-// TYPES
-// Export shared types
-// ============================================
+export { DatePicker } from './components/DatePicker';
+export type { DatePickerProps, DatePickerVariant } from './components/DatePicker';
 
-// Example:
-// export type { ThemeMode, ColorVariant } from './types';
+export { Divider } from './components/Divder';
+export type { DividerProps, DividerType, DividerColor, DividerSpacing } from './components/Divder';
 
-// Temporary export to prevent empty module error
-export const ATOM_UI_VERSION = '0.1.0';
+export { FileUpload } from './components/FileUpload';
+export type { FileUploadProps } from './components/FileUpload';
+
+export { TextField, SelectField, PasswordField, SearchField } from './components/Input';
+export type { TextFieldProps, SelectFieldProps, PasswordFieldProps, SearchFieldProps, SelectOption, InputSize } from './components/Input';
+
+export { ListItem } from './components/Listitem';
+export type { ListItemProps } from './components/Listitem';
+
+export { PopMenu } from './components/PopMenu';
+export type { PopMenuProps } from './components/PopMenu';
+
+export { Radio } from './components/Radio';
+export type { RadioProps, RadioSize } from './components/Radio';
+
+export { Slider } from './components/Slider';
+export type { SliderProps } from './components/Slider';
+
+export { Switch } from './components/Switch';
+export type { SwitchProps, SwitchSize } from './components/Switch';
+
+export { Tabs, TabPanel } from './components/Tabs';
+export type { TabsProps, TabPanelProps, TabItem, TabsVariant, TabsSize, TabsOrientation } from './components/Tabs';
+
+export { Tag } from './components/Tag';
+export type { TagProps, TagSize, TagVariant, TagCounterProps } from './components/Tag';
+
+export { Tooltip } from './components/Tooltip';
+export type { TooltipProps, TooltipPlacement } from './components/Tooltip';

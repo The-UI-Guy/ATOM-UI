@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { User, Users, Gear, MapPin, Star, Image, Hammer, Wrench } from '@phosphor-icons/react';
 import { Tabs } from './Tabs';
 import * as RadixTabs from '@radix-ui/react-tabs';
+import { StoryPage, StoryHeader, Section, PropsTable } from '../../stories/StoryComponents';
 
 const meta: Meta<typeof Tabs> = {
   title: 'Components/Tabs',
@@ -14,17 +15,6 @@ const meta: Meta<typeof Tabs> = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-
-// Section wrapper component for consistent styling
-const Section = ({ title, description, children }: { title: string; description?: string; children: React.ReactNode }) => (
-  <div style={{ marginBottom: '48px' }}>
-    <h2 style={{ fontSize: '20px', fontWeight: 600, marginBottom: '8px', color: '#111' }}>{title}</h2>
-    {description && <p style={{ fontSize: '14px', color: '#666', marginBottom: '16px' }}>{description}</p>}
-    <div style={{ padding: '24px', background: '#fafafa', borderRadius: '8px' }}>
-      {children}
-    </div>
-  </div>
-);
 
 // Working Segment Demo
 const SegmentDemo = () => {
@@ -41,17 +31,17 @@ const SegmentDemo = () => {
           { value: 'notifications', label: 'Notifications', counter: 3 },
         ]}
       />
-      <RadixTabs.Content value="account" style={{ marginTop: 16, padding: 16, background: 'white', borderRadius: 8, border: '1px solid #e0e0e0' }}>
+      <RadixTabs.Content value="account" style={{ marginTop: 16, padding: 16, background: 'var(--atom-surface-1)', borderRadius: 8, border: '1px solid var(--atom-border-primary)' }}>
         <h3 style={{ margin: '0 0 8px', fontSize: 16, fontWeight: 600 }}>Account Settings</h3>
-        <p style={{ margin: 0, color: '#666', fontSize: 14 }}>Manage your account details, profile information, and preferences.</p>
+        <p style={{ margin: 0, color: 'var(--atom-text-secondary)', fontSize: 14 }}>Manage your account details, profile information, and preferences.</p>
       </RadixTabs.Content>
-      <RadixTabs.Content value="settings" style={{ marginTop: 16, padding: 16, background: 'white', borderRadius: 8, border: '1px solid #e0e0e0' }}>
+      <RadixTabs.Content value="settings" style={{ marginTop: 16, padding: 16, background: 'var(--atom-surface-1)', borderRadius: 8, border: '1px solid var(--atom-border-primary)' }}>
         <h3 style={{ margin: '0 0 8px', fontSize: 16, fontWeight: 600 }}>General Settings</h3>
-        <p style={{ margin: 0, color: '#666', fontSize: 14 }}>Configure application settings, themes, and display options.</p>
+        <p style={{ margin: 0, color: 'var(--atom-text-secondary)', fontSize: 14 }}>Configure application settings, themes, and display options.</p>
       </RadixTabs.Content>
-      <RadixTabs.Content value="notifications" style={{ marginTop: 16, padding: 16, background: 'white', borderRadius: 8, border: '1px solid #e0e0e0' }}>
+      <RadixTabs.Content value="notifications" style={{ marginTop: 16, padding: 16, background: 'var(--atom-surface-1)', borderRadius: 8, border: '1px solid var(--atom-border-primary)' }}>
         <h3 style={{ margin: '0 0 8px', fontSize: 16, fontWeight: 600 }}>Notifications</h3>
-        <p style={{ margin: 0, color: '#666', fontSize: 14 }}>You have 3 unread notifications. Manage your notification preferences here.</p>
+        <p style={{ margin: 0, color: 'var(--atom-text-secondary)', fontSize: 14 }}>You have 3 unread notifications. Manage your notification preferences here.</p>
       </RadixTabs.Content>
     </RadixTabs.Root>
   );
@@ -72,17 +62,17 @@ const UnderlineDemo = () => {
           { value: 'roles', label: 'Roles', icon: <Gear /> },
         ]}
       />
-      <RadixTabs.Content value="users" style={{ marginTop: 16, padding: 16, background: 'white', borderRadius: 8, border: '1px solid #e0e0e0' }}>
+      <RadixTabs.Content value="users" style={{ marginTop: 16, padding: 16, background: 'var(--atom-surface-1)', borderRadius: 8, border: '1px solid var(--atom-border-primary)' }}>
         <h3 style={{ margin: '0 0 8px', fontSize: 16, fontWeight: 600 }}>Users</h3>
-        <p style={{ margin: 0, color: '#666', fontSize: 14 }}>234 users in your organization. Add, remove, or manage user permissions.</p>
+        <p style={{ margin: 0, color: 'var(--atom-text-secondary)', fontSize: 14 }}>234 users in your organization. Add, remove, or manage user permissions.</p>
       </RadixTabs.Content>
-      <RadixTabs.Content value="teams" style={{ marginTop: 16, padding: 16, background: 'white', borderRadius: 8, border: '1px solid #e0e0e0' }}>
+      <RadixTabs.Content value="teams" style={{ marginTop: 16, padding: 16, background: 'var(--atom-surface-1)', borderRadius: 8, border: '1px solid var(--atom-border-primary)' }}>
         <h3 style={{ margin: '0 0 8px', fontSize: 16, fontWeight: 600 }}>Teams</h3>
-        <p style={{ margin: 0, color: '#666', fontSize: 14 }}>Organize users into teams for better collaboration and access control.</p>
+        <p style={{ margin: 0, color: 'var(--atom-text-secondary)', fontSize: 14 }}>Organize users into teams for better collaboration and access control.</p>
       </RadixTabs.Content>
-      <RadixTabs.Content value="roles" style={{ marginTop: 16, padding: 16, background: 'white', borderRadius: 8, border: '1px solid #e0e0e0' }}>
+      <RadixTabs.Content value="roles" style={{ marginTop: 16, padding: 16, background: 'var(--atom-surface-1)', borderRadius: 8, border: '1px solid var(--atom-border-primary)' }}>
         <h3 style={{ margin: '0 0 8px', fontSize: 16, fontWeight: 600 }}>Roles</h3>
-        <p style={{ margin: 0, color: '#666', fontSize: 14 }}>Define roles and permissions to control access across your application.</p>
+        <p style={{ margin: 0, color: 'var(--atom-text-secondary)', fontSize: 14 }}>Define roles and permissions to control access across your application.</p>
       </RadixTabs.Content>
     </RadixTabs.Root>
   );
@@ -105,17 +95,17 @@ const VerticalDemo = () => {
         ]}
       />
       <div style={{ flex: 1 }}>
-        <RadixTabs.Content value="setup" style={{ padding: 16, background: 'white', borderRadius: 8, border: '1px solid #e0e0e0' }}>
+        <RadixTabs.Content value="setup" style={{ padding: 16, background: 'var(--atom-surface-1)', borderRadius: 8, border: '1px solid var(--atom-border-primary)' }}>
           <h3 style={{ margin: '0 0 8px', fontSize: 16, fontWeight: 600 }}>Setup</h3>
-          <p style={{ margin: 0, color: '#666', fontSize: 14 }}>Initial configuration and onboarding steps.</p>
+          <p style={{ margin: 0, color: 'var(--atom-text-secondary)', fontSize: 14 }}>Initial configuration and onboarding steps.</p>
         </RadixTabs.Content>
-        <RadixTabs.Content value="users" style={{ padding: 16, background: 'white', borderRadius: 8, border: '1px solid #e0e0e0' }}>
+        <RadixTabs.Content value="users" style={{ padding: 16, background: 'var(--atom-surface-1)', borderRadius: 8, border: '1px solid var(--atom-border-primary)' }}>
           <h3 style={{ margin: '0 0 8px', fontSize: 16, fontWeight: 600 }}>Users</h3>
-          <p style={{ margin: 0, color: '#666', fontSize: 14 }}>12 users need your attention.</p>
+          <p style={{ margin: 0, color: 'var(--atom-text-secondary)', fontSize: 14 }}>12 users need your attention.</p>
         </RadixTabs.Content>
-        <RadixTabs.Content value="billing" style={{ padding: 16, background: 'white', borderRadius: 8, border: '1px solid #e0e0e0' }}>
+        <RadixTabs.Content value="billing" style={{ padding: 16, background: 'var(--atom-surface-1)', borderRadius: 8, border: '1px solid var(--atom-border-primary)' }}>
           <h3 style={{ margin: '0 0 8px', fontSize: 16, fontWeight: 600 }}>Billing</h3>
-          <p style={{ margin: 0, color: '#666', fontSize: 14 }}>Manage your subscription and payment methods.</p>
+          <p style={{ margin: 0, color: 'var(--atom-text-secondary)', fontSize: 14 }}>Manage your subscription and payment methods.</p>
         </RadixTabs.Content>
       </div>
     </RadixTabs.Root>
@@ -127,28 +117,25 @@ export const Documentation: Story = {
     layout: 'fullscreen',
   },
   render: () => (
-    <div style={{ padding: '40px', maxWidth: '900px' }}>
-      {/* Header */}
-      <div style={{ marginBottom: '40px' }}>
-        <h1 style={{ fontSize: '32px', fontWeight: 700, marginBottom: '8px' }}>Tabs</h1>
-        <p style={{ fontSize: '16px', color: '#666' }}>
-          A tabbed interface with segment or underline variants. Supports horizontal and vertical orientations.
-        </p>
-      </div>
+    <StoryPage>
+      <StoryHeader
+        title="Tabs"
+        description="A tabbed interface with segment or underline variants. Supports horizontal and vertical orientations."
+      />
 
       {/* Working Demos */}
       <Section title="Interactive Demos" description="Click tabs to see content change.">
         <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Segment variant</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Segment variant</div>
             <SegmentDemo />
           </div>
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Underline variant</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Underline variant</div>
             <UnderlineDemo />
           </div>
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Vertical variant</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Vertical variant</div>
             <VerticalDemo />
           </div>
         </div>
@@ -159,7 +146,7 @@ export const Documentation: Story = {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           {/* Plain text */}
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Plain text - Small</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Plain text - Small</div>
             <Tabs
               variant="segment"
               size="sm"
@@ -172,7 +159,7 @@ export const Documentation: Story = {
             />
           </div>
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Plain text - Medium</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Plain text - Medium</div>
             <Tabs
               variant="segment"
               size="md"
@@ -187,7 +174,7 @@ export const Documentation: Story = {
 
           {/* Text and icon */}
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Text + Icon - Small</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Text + Icon - Small</div>
             <Tabs
               variant="segment"
               size="sm"
@@ -200,7 +187,7 @@ export const Documentation: Story = {
             />
           </div>
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Text + Icon - Medium</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Text + Icon - Medium</div>
             <Tabs
               variant="segment"
               size="md"
@@ -215,7 +202,7 @@ export const Documentation: Story = {
 
           {/* Text + Icon + Counter */}
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Text + Icon + Counter - Small</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Text + Icon + Counter - Small</div>
             <Tabs
               variant="segment"
               size="sm"
@@ -228,7 +215,7 @@ export const Documentation: Story = {
             />
           </div>
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Text + Icon + Counter - Medium</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Text + Icon + Counter - Medium</div>
             <Tabs
               variant="segment"
               size="md"
@@ -243,7 +230,7 @@ export const Documentation: Story = {
 
           {/* Icon only */}
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Icon only - Small</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Icon only - Small</div>
             <Tabs
               variant="segment"
               size="sm"
@@ -257,7 +244,7 @@ export const Documentation: Story = {
             />
           </div>
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Icon only - Medium</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Icon only - Medium</div>
             <Tabs
               variant="segment"
               size="md"
@@ -273,7 +260,7 @@ export const Documentation: Story = {
 
           {/* Icon + Counter */}
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Icon + Counter - Small</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Icon + Counter - Small</div>
             <Tabs
               variant="segment"
               size="sm"
@@ -287,7 +274,7 @@ export const Documentation: Story = {
             />
           </div>
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Icon + Counter - Medium</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Icon + Counter - Medium</div>
             <Tabs
               variant="segment"
               size="md"
@@ -308,7 +295,7 @@ export const Documentation: Story = {
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           {/* Plain text */}
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Plain text - Small</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Plain text - Small</div>
             <Tabs
               variant="underline"
               size="sm"
@@ -321,7 +308,7 @@ export const Documentation: Story = {
             />
           </div>
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Plain text - Medium</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Plain text - Medium</div>
             <Tabs
               variant="underline"
               size="md"
@@ -336,7 +323,7 @@ export const Documentation: Story = {
 
           {/* Text + Counter */}
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Text + Counter - Small</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Text + Counter - Small</div>
             <Tabs
               variant="underline"
               size="sm"
@@ -349,7 +336,7 @@ export const Documentation: Story = {
             />
           </div>
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Text + Counter - Medium</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Text + Counter - Medium</div>
             <Tabs
               variant="underline"
               size="md"
@@ -364,7 +351,7 @@ export const Documentation: Story = {
 
           {/* Text + Icon */}
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Text + Icon - Small</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Text + Icon - Small</div>
             <Tabs
               variant="underline"
               size="sm"
@@ -378,7 +365,7 @@ export const Documentation: Story = {
             />
           </div>
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Text + Icon - Medium</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Text + Icon - Medium</div>
             <Tabs
               variant="underline"
               size="md"
@@ -394,7 +381,7 @@ export const Documentation: Story = {
 
           {/* Text + Icon + Counter */}
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Text + Icon + Counter - Small</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Text + Icon + Counter - Small</div>
             <Tabs
               variant="underline"
               size="sm"
@@ -407,7 +394,7 @@ export const Documentation: Story = {
             />
           </div>
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Text + Icon + Counter - Medium</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Text + Icon + Counter - Medium</div>
             <Tabs
               variant="underline"
               size="md"
@@ -426,7 +413,7 @@ export const Documentation: Story = {
       <Section title="Vertical Orientation - All Sizes" description="Vertical tabs in both variants and sizes.">
         <div style={{ display: 'flex', gap: '48px', flexWrap: 'wrap' }}>
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Underline - Small</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Underline - Small</div>
             <Tabs
               variant="underline"
               orientation="vertical"
@@ -440,7 +427,7 @@ export const Documentation: Story = {
             />
           </div>
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Underline - Medium</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Underline - Medium</div>
             <Tabs
               variant="underline"
               orientation="vertical"
@@ -454,7 +441,7 @@ export const Documentation: Story = {
             />
           </div>
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Segment - Small</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Segment - Small</div>
             <Tabs
               variant="segment"
               orientation="vertical"
@@ -468,7 +455,7 @@ export const Documentation: Story = {
             />
           </div>
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Segment - Medium</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Segment - Medium</div>
             <Tabs
               variant="segment"
               orientation="vertical"
@@ -513,99 +500,28 @@ export const Documentation: Story = {
       {/* API Reference */}
       <Section title="API Reference">
         <h3 style={{ fontSize: '16px', fontWeight: 600, marginBottom: '12px' }}>Tabs Props</h3>
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px', marginBottom: '24px' }}>
-          <thead>
-            <tr style={{ borderBottom: '2px solid #e0e0e0', textAlign: 'left' }}>
-              <th style={{ padding: '12px 16px 12px 0', fontWeight: 600 }}>Prop</th>
-              <th style={{ padding: '12px 16px 12px 0', fontWeight: 600 }}>Type</th>
-              <th style={{ padding: '12px 16px 12px 0', fontWeight: 600 }}>Default</th>
-              <th style={{ padding: '12px 0', fontWeight: 600 }}>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>items</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>TabItem[]</td>
-              <td style={{ padding: '12px 16px 12px 0' }}>required</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Array of tab configurations</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>value</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>string</td>
-              <td style={{ padding: '12px 16px 12px 0' }}>-</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Controlled selected value</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>defaultValue</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>string</td>
-              <td style={{ padding: '12px 16px 12px 0' }}>first item</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Default selected value</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>onValueChange</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>(value: string) =&gt; void</td>
-              <td style={{ padding: '12px 16px 12px 0' }}>-</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Callback when tab changes</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>variant</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>'segment' | 'underline'</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>'segment'</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Visual variant</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>size</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>'sm' | 'md'</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>'md'</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Size variant (12px or 14px font)</td>
-            </tr>
-            <tr>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>orientation</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>'horizontal' | 'vertical'</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>'horizontal'</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Tab orientation</td>
-            </tr>
-          </tbody>
-        </table>
+        <PropsTable rows={[
+          ['items', 'TabItem[]', 'required', 'Array of tab configurations'],
+          ['value', 'string', '-', 'Controlled selected value'],
+          ['defaultValue', 'string', 'first item', 'Default selected value'],
+          ['onValueChange', '(value: string) => void', '-', 'Callback when tab changes'],
+          ['variant', "'segment' | 'underline'", "'segment'", 'Visual variant'],
+          ['size', "'sm' | 'md'", "'md'", 'Size variant (12px or 14px font)'],
+          ['orientation', "'horizontal' | 'vertical'", "'horizontal'", 'Tab orientation'],
+        ]} />
 
-        <h3 style={{ fontSize: '16px', fontWeight: 600, marginBottom: '12px' }}>TabItem Props</h3>
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px' }}>
-          <thead>
-            <tr style={{ borderBottom: '2px solid #e0e0e0', textAlign: 'left' }}>
-              <th style={{ padding: '12px 16px 12px 0', fontWeight: 600 }}>Prop</th>
-              <th style={{ padding: '12px 16px 12px 0', fontWeight: 600 }}>Type</th>
-              <th style={{ padding: '12px 0', fontWeight: 600 }}>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>value</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>string</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Unique identifier (required)</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>label</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>string</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Tab label text</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>icon</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>ReactNode</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Tab icon</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>counter</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>number</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Counter badge value</td>
-            </tr>
-            <tr>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>disabled</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>boolean</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Disable this tab</td>
-            </tr>
-          </tbody>
-        </table>
+        <h3 style={{ fontSize: '16px', fontWeight: 600, marginBottom: '12px', marginTop: '24px' }}>TabItem Props</h3>
+        <PropsTable
+          columns={['Prop', 'Type', 'Description']}
+          rows={[
+            ['value', 'string', 'Unique identifier (required)'],
+            ['label', 'string', 'Tab label text'],
+            ['icon', 'ReactNode', 'Tab icon'],
+            ['counter', 'number', 'Counter badge value'],
+            ['disabled', 'boolean', 'Disable this tab'],
+          ]}
+        />
       </Section>
-    </div>
+    </StoryPage>
   ),
 };

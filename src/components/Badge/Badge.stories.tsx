@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Badge } from './Badge';
+import { StoryPage, StoryHeader, Section, PropsTable } from '../../stories/StoryComponents';
 
 const meta: Meta<typeof Badge> = {
   title: 'Components/Badge',
@@ -12,64 +13,50 @@ const meta: Meta<typeof Badge> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// Section wrapper component for consistent styling
-const Section = ({ title, description, children }: { title: string; description?: string; children: React.ReactNode }) => (
-  <div style={{ marginBottom: '48px' }}>
-    <h2 style={{ fontSize: '20px', fontWeight: 600, marginBottom: '8px', color: '#111' }}>{title}</h2>
-    {description && <p style={{ fontSize: '14px', color: '#666', marginBottom: '16px' }}>{description}</p>}
-    <div style={{ padding: '24px', background: '#fafafa', borderRadius: '8px' }}>
-      {children}
-    </div>
-  </div>
-);
-
 export const Documentation: Story = {
   parameters: {
     layout: 'fullscreen',
   },
   render: () => (
-    <div style={{ padding: '40px', maxWidth: '900px' }}>
-      {/* Header */}
-      <div style={{ marginBottom: '40px' }}>
-        <h1 style={{ fontSize: '32px', fontWeight: 700, marginBottom: '8px' }}>Badge</h1>
-        <p style={{ fontSize: '16px', color: '#666' }}>
-          A small status indicator that displays a count or a simple dot. Used to show notifications, status, or quantities.
-        </p>
-      </div>
+    <StoryPage>
+      <StoryHeader
+        title="Badge"
+        description="A small status indicator that displays a count or a simple dot. Used to show notifications, status, or quantities."
+      />
 
       {/* Overview */}
       <Section title="Overview" description="Badge types and intents at a glance.">
         <table style={{ borderCollapse: 'separate', borderSpacing: '24px 16px' }}>
           <thead>
             <tr>
-              <th style={{ fontSize: '12px', color: '#666', fontWeight: 500, textAlign: 'left' }}>Intent</th>
-              <th style={{ fontSize: '12px', color: '#666', fontWeight: 500, textAlign: 'center' }}>Dot</th>
-              <th style={{ fontSize: '12px', color: '#666', fontWeight: 500, textAlign: 'center' }}>Count</th>
+              <th style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', fontWeight: 500, textAlign: 'left' }}>Intent</th>
+              <th style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', fontWeight: 500, textAlign: 'center' }}>Dot</th>
+              <th style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', fontWeight: 500, textAlign: 'center' }}>Count</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td style={{ fontSize: '13px', color: '#666' }}>neutral</td>
+              <td style={{ fontSize: '13px', color: 'var(--atom-text-secondary)' }}>neutral</td>
               <td style={{ textAlign: 'center' }}><Badge type="dot" intent="neutral" /></td>
               <td style={{ textAlign: 'center' }}><Badge type="count" intent="neutral" count={5} /></td>
             </tr>
             <tr>
-              <td style={{ fontSize: '13px', color: '#666' }}>primary</td>
+              <td style={{ fontSize: '13px', color: 'var(--atom-text-secondary)' }}>primary</td>
               <td style={{ textAlign: 'center' }}><Badge type="dot" intent="primary" /></td>
               <td style={{ textAlign: 'center' }}><Badge type="count" intent="primary" count={5} /></td>
             </tr>
             <tr>
-              <td style={{ fontSize: '13px', color: '#666' }}>success</td>
+              <td style={{ fontSize: '13px', color: 'var(--atom-text-secondary)' }}>success</td>
               <td style={{ textAlign: 'center' }}><Badge type="dot" intent="success" /></td>
               <td style={{ textAlign: 'center' }}><Badge type="count" intent="success" count={5} /></td>
             </tr>
             <tr>
-              <td style={{ fontSize: '13px', color: '#666' }}>warning</td>
+              <td style={{ fontSize: '13px', color: 'var(--atom-text-secondary)' }}>warning</td>
               <td style={{ textAlign: 'center' }}><Badge type="dot" intent="warning" /></td>
               <td style={{ textAlign: 'center' }}><Badge type="count" intent="warning" count={5} /></td>
             </tr>
             <tr>
-              <td style={{ fontSize: '13px', color: '#666' }}>error</td>
+              <td style={{ fontSize: '13px', color: 'var(--atom-text-secondary)' }}>error</td>
               <td style={{ textAlign: 'center' }}><Badge type="dot" intent="error" /></td>
               <td style={{ textAlign: 'center' }}><Badge type="count" intent="error" count={5} /></td>
             </tr>
@@ -83,12 +70,12 @@ export const Documentation: Story = {
           <div style={{ textAlign: 'center' }}>
             <div style={{ marginBottom: '12px', fontSize: '13px', fontWeight: 500 }}>Dot</div>
             <Badge type="dot" intent="error" />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>Status indicator</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>Status indicator</div>
           </div>
           <div style={{ textAlign: 'center' }}>
             <div style={{ marginBottom: '12px', fontSize: '13px', fontWeight: 500 }}>Count</div>
             <Badge type="count" intent="error" count={12} />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>Notification count</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>Notification count</div>
           </div>
         </div>
       </Section>
@@ -98,23 +85,23 @@ export const Documentation: Story = {
         <div style={{ display: 'flex', gap: '32px', alignItems: 'center' }}>
           <div style={{ textAlign: 'center' }}>
             <Badge type="count" intent="neutral" count={8} />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>Neutral</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>Neutral</div>
           </div>
           <div style={{ textAlign: 'center' }}>
             <Badge type="count" intent="primary" count={8} />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>Primary</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>Primary</div>
           </div>
           <div style={{ textAlign: 'center' }}>
             <Badge type="count" intent="success" count={8} />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>Success</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>Success</div>
           </div>
           <div style={{ textAlign: 'center' }}>
             <Badge type="count" intent="warning" count={8} />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>Warning</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>Warning</div>
           </div>
           <div style={{ textAlign: 'center' }}>
             <Badge type="count" intent="error" count={8} />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>Error</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>Error</div>
           </div>
         </div>
       </Section>
@@ -124,23 +111,23 @@ export const Documentation: Story = {
         <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
           <div style={{ textAlign: 'center' }}>
             <Badge type="count" count={1} />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>Single digit</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>Single digit</div>
           </div>
           <div style={{ textAlign: 'center' }}>
             <Badge type="count" count={25} />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>Double digit</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>Double digit</div>
           </div>
           <div style={{ textAlign: 'center' }}>
             <Badge type="count" count={99} />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>Max (99)</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>Max (99)</div>
           </div>
           <div style={{ textAlign: 'center' }}>
             <Badge type="count" count={150} max={99} />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>Over max (99+)</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>Over max (99+)</div>
           </div>
           <div style={{ textAlign: 'center' }}>
             <Badge type="count" count={0} showZero />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>Zero (showZero)</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>Zero (showZero)</div>
           </div>
         </div>
       </Section>
@@ -150,70 +137,30 @@ export const Documentation: Story = {
         <div style={{ display: 'flex', gap: '24px', alignItems: 'center' }}>
           <div style={{ textAlign: 'center' }}>
             <Badge type="count" count={15} max={10} />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>max=10, count=15</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>max=10, count=15</div>
           </div>
           <div style={{ textAlign: 'center' }}>
             <Badge type="count" count={500} max={99} />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>max=99, count=500</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>max=99, count=500</div>
           </div>
           <div style={{ textAlign: 'center' }}>
             <Badge type="count" count={1500} max={999} />
-            <div style={{ marginTop: '8px', fontSize: '12px', color: '#666' }}>max=999, count=1500</div>
+            <div style={{ marginTop: '8px', fontSize: '12px', color: 'var(--atom-text-secondary)' }}>max=999, count=1500</div>
           </div>
         </div>
       </Section>
 
       {/* API Reference */}
       <Section title="API Reference">
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px' }}>
-          <thead>
-            <tr style={{ borderBottom: '2px solid #e0e0e0', textAlign: 'left' }}>
-              <th style={{ padding: '12px 16px 12px 0', fontWeight: 600 }}>Prop</th>
-              <th style={{ padding: '12px 16px 12px 0', fontWeight: 600 }}>Type</th>
-              <th style={{ padding: '12px 16px 12px 0', fontWeight: 600 }}>Default</th>
-              <th style={{ padding: '12px 0', fontWeight: 600 }}>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>type</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>'dot' | 'count'</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>'dot'</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Badge display type</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>intent</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>'neutral' | 'primary' | 'success' | 'warning' | 'error'</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>'primary'</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Color scheme</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>count</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>number</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>0</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Number to display (for type="count")</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>max</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>number</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>99</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Max value before showing "+"</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>showZero</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>boolean</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>false</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Show badge when count is 0</td>
-            </tr>
-            <tr>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>className</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>string</td>
-              <td style={{ padding: '12px 16px 12px 0' }}>-</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Additional CSS classes</td>
-            </tr>
-          </tbody>
-        </table>
+        <PropsTable rows={[
+          ['type', "'dot' | 'count'", "'dot'", 'Badge display type'],
+          ['intent', "'neutral' | 'primary' | 'success' | 'warning' | 'error'", "'primary'", 'Color scheme'],
+          ['count', 'number', '0', 'Number to display (for type="count")'],
+          ['max', 'number', '99', 'Max value before showing "+"'],
+          ['showZero', 'boolean', 'false', 'Show badge when count is 0'],
+          ['className', 'string', '-', 'Additional CSS classes'],
+        ]} />
       </Section>
-    </div>
+    </StoryPage>
   ),
 };

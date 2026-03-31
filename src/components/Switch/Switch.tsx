@@ -138,7 +138,7 @@ export const Switch = ({
             {icon && (
               <span className="flex-shrink-0 flex items-center">
                 {React.isValidElement(icon) 
-                  ? React.cloneElement(icon as React.ReactElement, { size: config.iconSize, weight: 'bold' })
+                  ? React.cloneElement(icon as React.ReactElement<{ size?: number; weight?: string }>, { size: config.iconSize, weight: 'bold' })
                   : icon
                 }
               </span>

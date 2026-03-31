@@ -1,4 +1,4 @@
-import { ReactNode, InputHTMLAttributes, SelectHTMLAttributes } from 'react';
+import { ReactNode, InputHTMLAttributes } from 'react';
 
 /**
  * Input size variants
@@ -74,7 +74,7 @@ export interface SelectOption {
 /**
  * SelectField props
  */
-export interface SelectFieldProps extends InputBaseProps, Omit<SelectHTMLAttributes<HTMLSelectElement>, 'size'> {
+export interface SelectFieldProps extends InputBaseProps {
   /**
    * Options for the select dropdown
    */
@@ -86,9 +86,29 @@ export interface SelectFieldProps extends InputBaseProps, Omit<SelectHTMLAttribu
   placeholder?: string;
 
   /**
+   * Currently selected value
+   */
+  value?: string;
+
+  /**
+   * Called with the selected option's value when selection changes
+   */
+  onChange?: (value: string) => void;
+
+  /**
    * Icon displayed on the left side
    */
   iconLeft?: ReactNode;
+
+  /**
+   * Disables the field
+   */
+  disabled?: boolean;
+
+  /**
+   * Name attribute (for form usage)
+   */
+  name?: string;
 }
 
 /**

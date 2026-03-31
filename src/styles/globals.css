@@ -358,7 +358,7 @@
   --atom-primary-main: #6959FF;
   --atom-primary-tint1: #9D92FF;
   --atom-primary-tint2: #9084FF;
-  --atom-primary-contrast: var(--atom-grey-1000);
+  --atom-primary-contrast: var(--atom-white);
   --atom-primary-transparent: rgba(105, 89, 255, 0.2);
   --atom-primary-shadow: rgba(105, 89, 255, 0.4);
 
@@ -386,7 +386,7 @@
   --atom-error-main: var(--atom-r-400);
   --atom-error-tint1: var(--atom-r-300);
   --atom-error-tint2: var(--atom-r-200);
-  --atom-error-contrast: var(--atom-grey-1000);
+  --atom-error-contrast: var(--atom-white);
   --atom-error-transparent: rgba(243, 74, 74, 0.2);
 
   --atom-action-hover: rgba(255, 255, 255, 0.1);

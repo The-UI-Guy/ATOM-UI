@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { FileUpload } from './FileUpload';
+import { StoryPage, StoryHeader, Section, PropsTable } from '../../stories/StoryComponents';
 
 const meta: Meta<typeof FileUpload> = {
   title: 'Components/FileUpload',
@@ -13,17 +14,6 @@ const meta: Meta<typeof FileUpload> = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-// Section wrapper component for consistent styling
-const Section = ({ title, description, children }: { title: string; description?: string; children: React.ReactNode }) => (
-  <div style={{ marginBottom: '48px' }}>
-    <h2 style={{ fontSize: '20px', fontWeight: 600, marginBottom: '8px', color: '#111' }}>{title}</h2>
-    {description && <p style={{ fontSize: '14px', color: '#666', marginBottom: '16px' }}>{description}</p>}
-    <div style={{ padding: '24px', background: '#fafafa', borderRadius: '8px' }}>
-      {children}
-    </div>
-  </div>
-);
-
 // Interactive demo with simulated upload
 const UploadDemo = () => {
   const [progress, setProgress] = useState<number | undefined>(undefined);
@@ -32,7 +22,7 @@ const UploadDemo = () => {
   const handleFileSelect = (files: FileList) => {
     setStatus(`Selected: ${files[0].name}`);
     setProgress(0);
-    
+
     // Simulate upload progress
     let currentProgress = 0;
     const interval = setInterval(() => {
@@ -58,7 +48,7 @@ const UploadDemo = () => {
         progress={progress}
       />
       {status && (
-        <p style={{ marginTop: '12px', fontSize: '14px', color: '#666' }}>{status}</p>
+        <p style={{ marginTop: '12px', fontSize: '14px', color: 'var(--atom-text-secondary)' }}>{status}</p>
       )}
     </div>
   );
@@ -93,14 +83,11 @@ export const Documentation: Story = {
     layout: 'fullscreen',
   },
   render: () => (
-    <div style={{ padding: '40px', maxWidth: '900px' }}>
-      {/* Header */}
-      <div style={{ marginBottom: '40px' }}>
-        <h1 style={{ fontSize: '32px', fontWeight: 700, marginBottom: '8px' }}>FileUpload</h1>
-        <p style={{ fontSize: '16px', color: '#666' }}>
-          A dropzone component for uploading files via drag-and-drop or click.
-        </p>
-      </div>
+    <StoryPage>
+      <StoryHeader
+        title="FileUpload"
+        description="A dropzone component for uploading files via drag-and-drop or click."
+      />
 
       {/* Interactive Demo */}
       <Section title="Interactive Demo" description="Try dragging a file or clicking to upload. Shows simulated progress.">
@@ -111,7 +98,7 @@ export const Documentation: Story = {
       <Section title="States" description="The four states of the FileUpload component.">
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Default</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Default</div>
             <div style={{ width: '400px' }}>
               <FileUpload
                 acceptedTypesLabel="JPEG, Doc, PDF, PNG"
@@ -120,7 +107,7 @@ export const Documentation: Story = {
           </div>
 
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Hover/Drag (hover over to see)</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Hover/Drag (hover over to see)</div>
             <div style={{ width: '400px' }}>
               <FileUpload
                 acceptedTypesLabel="JPEG, Doc, PDF, PNG"
@@ -129,12 +116,12 @@ export const Documentation: Story = {
           </div>
 
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Uploading (animated)</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Uploading (animated)</div>
             <AnimatedProgressDemo />
           </div>
 
           <div>
-            <div style={{ fontSize: '12px', color: '#666', marginBottom: '8px' }}>Disabled</div>
+            <div style={{ fontSize: '12px', color: 'var(--atom-text-secondary)', marginBottom: '8px' }}>Disabled</div>
             <div style={{ width: '400px' }}>
               <FileUpload
                 acceptedTypesLabel="JPEG, Doc, PDF, PNG"
@@ -170,73 +157,18 @@ export const Documentation: Story = {
 
       {/* API Reference */}
       <Section title="API Reference">
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px' }}>
-          <thead>
-            <tr style={{ borderBottom: '2px solid #e0e0e0', textAlign: 'left' }}>
-              <th style={{ padding: '12px 16px 12px 0', fontWeight: 600 }}>Prop</th>
-              <th style={{ padding: '12px 16px 12px 0', fontWeight: 600 }}>Type</th>
-              <th style={{ padding: '12px 16px 12px 0', fontWeight: 600 }}>Default</th>
-              <th style={{ padding: '12px 0', fontWeight: 600 }}>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>onFileSelect</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>(files: FileList) =&gt; void</td>
-              <td style={{ padding: '12px 16px 12px 0' }}>-</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Callback when files are selected</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>accept</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>string</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>'*'</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Accepted file types (e.g., ".jpg,.png")</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>acceptedTypesLabel</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>string</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>'All file types'</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Display text for accepted types</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>multiple</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>boolean</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>false</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Allow multiple file selection</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>progress</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>number</td>
-              <td style={{ padding: '12px 16px 12px 0' }}>-</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Upload progress (0-100). Shows progress bar when set.</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>disabled</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>boolean</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>false</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Disable the dropzone</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>clickLabel</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>string</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>'Click here'</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Custom label text (primary color)</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>description</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>string</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>'to upload your file or drag'</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Description text after label</td>
-            </tr>
-            <tr>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>className</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>string</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>''</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Additional CSS classes</td>
-            </tr>
-          </tbody>
-        </table>
+        <PropsTable rows={[
+          ['onFileSelect', '(files: FileList) => void', '-', 'Callback when files are selected'],
+          ['accept', 'string', "'*'", 'Accepted file types (e.g., ".jpg,.png")'],
+          ['acceptedTypesLabel', 'string', "'All file types'", 'Display text for accepted types'],
+          ['multiple', 'boolean', 'false', 'Allow multiple file selection'],
+          ['progress', 'number', '-', 'Upload progress (0-100). Shows progress bar when set.'],
+          ['disabled', 'boolean', 'false', 'Disable the dropzone'],
+          ['clickLabel', 'string', "'Click here'", 'Custom label text (primary color)'],
+          ['description', 'string', "'to upload your file or drag'", 'Description text after label'],
+          ['className', 'string', "''", 'Additional CSS classes'],
+        ]} />
       </Section>
-    </div>
+    </StoryPage>
   ),
 };

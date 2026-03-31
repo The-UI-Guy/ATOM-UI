@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { File, Star, User, Heart, Tag as TagIcon } from '@phosphor-icons/react';
 import { Tag } from './Tag';
+import { StoryPage, StoryHeader, Section, PropsTable } from '../../stories/StoryComponents';
 
 const meta: Meta<typeof Tag> = {
   title: 'Components/Tag',
@@ -13,17 +14,6 @@ const meta: Meta<typeof Tag> = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-
-// Section wrapper component for consistent styling
-const Section = ({ title, description, children }: { title: string; description?: string; children: React.ReactNode }) => (
-  <div style={{ marginBottom: '48px' }}>
-    <h2 style={{ fontSize: '20px', fontWeight: 600, marginBottom: '8px', color: '#111' }}>{title}</h2>
-    {description && <p style={{ fontSize: '14px', color: '#666', marginBottom: '16px' }}>{description}</p>}
-    <div style={{ padding: '24px', background: '#fafafa', borderRadius: '8px' }}>
-      {children}
-    </div>
-  </div>
-);
 
 // Interactive checkable demo
 const CheckableDemo = () => {
@@ -67,18 +57,18 @@ const DeletableDemo = () => {
           </Tag>
         ))}
         {tags.length === 0 && (
-          <span style={{ color: '#666', fontSize: '14px' }}>All tags removed</span>
+          <span style={{ color: 'var(--atom-text-secondary)', fontSize: '14px' }}>All tags removed</span>
         )}
       </div>
       {tags.length < 4 && (
-        <button 
+        <button
           onClick={reset}
-          style={{ 
-            fontSize: '14px', 
-            color: '#5327D7', 
-            background: 'none', 
-            border: 'none', 
-            cursor: 'pointer' 
+          style={{
+            fontSize: '14px',
+            color: 'var(--atom-primary-main)',
+            background: 'none',
+            border: 'none',
+            cursor: 'pointer'
           }}
         >
           Reset tags
@@ -93,14 +83,11 @@ export const Documentation: Story = {
     layout: 'fullscreen',
   },
   render: () => (
-    <div style={{ padding: '40px', maxWidth: '900px' }}>
-      {/* Header */}
-      <div style={{ marginBottom: '40px' }}>
-        <h1 style={{ fontSize: '32px', fontWeight: 700, marginBottom: '8px' }}>Tag</h1>
-        <p style={{ fontSize: '16px', color: '#666' }}>
-          A versatile tag/chip component for labels, filters, and selections.
-        </p>
-      </div>
+    <StoryPage>
+      <StoryHeader
+        title="Tag"
+        description="A versatile tag/chip component for labels, filters, and selections."
+      />
 
       {/* Variants */}
       <Section title="Variants" description="Three visual variants: primary, outline, and neutral.">
@@ -188,20 +175,20 @@ export const Documentation: Story = {
       {/* Combined Features */}
       <Section title="Combined Features" description="Combine multiple features together.">
         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
-          <Tag 
+          <Tag
             size="sm"
-            variant="outline" 
-            itemStart={<User />} 
-            counter={{ count: 3 }} 
+            variant="outline"
+            itemStart={<User />}
+            counter={{ count: 3 }}
             deletable
           >
             Team Members
           </Tag>
-          <Tag 
+          <Tag
             size="sm"
-            variant="primary" 
-            checkable 
-            checked 
+            variant="primary"
+            checkable
+            checked
             itemEnd={<Star />}
           >
             Favorite
@@ -211,103 +198,23 @@ export const Documentation: Story = {
 
       {/* API Reference */}
       <Section title="API Reference">
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px' }}>
-          <thead>
-            <tr style={{ borderBottom: '2px solid #e0e0e0', textAlign: 'left' }}>
-              <th style={{ padding: '12px 16px 12px 0', fontWeight: 600 }}>Prop</th>
-              <th style={{ padding: '12px 16px 12px 0', fontWeight: 600 }}>Type</th>
-              <th style={{ padding: '12px 16px 12px 0', fontWeight: 600 }}>Default</th>
-              <th style={{ padding: '12px 0', fontWeight: 600 }}>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>children</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>ReactNode</td>
-              <td style={{ padding: '12px 16px 12px 0' }}>required</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Tag label text</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>size</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>'sm' | 'md'</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>'md'</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Size variant (24px or 32px)</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>variant</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>'primary' | 'outline' | 'neutral'</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>'outline'</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Visual variant</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>color</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>string</td>
-              <td style={{ padding: '12px 16px 12px 0' }}>-</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Custom color (for primary variant)</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>itemStart</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>ReactNode</td>
-              <td style={{ padding: '12px 16px 12px 0' }}>-</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Element at start (icon, avatar)</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>itemEnd</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>ReactNode</td>
-              <td style={{ padding: '12px 16px 12px 0' }}>-</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Element at end (icon, avatar)</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>counter</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>TagCounterProps</td>
-              <td style={{ padding: '12px 16px 12px 0' }}>-</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>{`{ count, color? }`} for badge</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>checkable</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>boolean</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>false</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Show checkbox for multi-select</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>checked</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>boolean</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>false</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Checked state (when checkable)</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>onCheckedChange</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>(checked: boolean) =&gt; void</td>
-              <td style={{ padding: '12px 16px 12px 0' }}>-</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Callback when checked changes</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>deletable</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>boolean</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>false</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Show delete button</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>onDelete</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>() =&gt; void</td>
-              <td style={{ padding: '12px 16px 12px 0' }}>-</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Callback when delete clicked</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>onClick</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>() =&gt; void</td>
-              <td style={{ padding: '12px 16px 12px 0' }}>-</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Click handler for the tag</td>
-            </tr>
-            <tr>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>disabled</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>boolean</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>false</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Disable the tag</td>
-            </tr>
-          </tbody>
-        </table>
+        <PropsTable rows={[
+          ['children', 'ReactNode', 'required', 'Tag label text'],
+          ['size', "'sm' | 'md'", "'md'", 'Size variant (24px or 32px)'],
+          ['variant', "'primary' | 'outline' | 'neutral'", "'outline'", 'Visual variant'],
+          ['color', 'string', '-', 'Custom color (for primary variant)'],
+          ['itemStart', 'ReactNode', '-', 'Element at start (icon, avatar)'],
+          ['itemEnd', 'ReactNode', '-', 'Element at end (icon, avatar)'],
+          ['counter', 'TagCounterProps', '-', '{ count, color? } for badge'],
+          ['checkable', 'boolean', 'false', 'Show checkbox for multi-select'],
+          ['checked', 'boolean', 'false', 'Checked state (when checkable)'],
+          ['onCheckedChange', '(checked: boolean) => void', '-', 'Callback when checked changes'],
+          ['deletable', 'boolean', 'false', 'Show delete button'],
+          ['onDelete', '() => void', '-', 'Callback when delete clicked'],
+          ['onClick', '() => void', '-', 'Click handler for the tag'],
+          ['disabled', 'boolean', 'false', 'Disable the tag'],
+        ]} />
       </Section>
-    </div>
+    </StoryPage>
   ),
 };

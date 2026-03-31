@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { Slider } from './Slider';
+import { StoryPage, StoryHeader, Section, PropsTable } from '../../stories/StoryComponents';
 
 const meta: Meta<typeof Slider> = {
   title: 'Components/Slider',
@@ -12,17 +13,6 @@ const meta: Meta<typeof Slider> = {
 
 export default meta;
 type Story = StoryObj<typeof meta>;
-
-// Section wrapper component for consistent styling
-const Section = ({ title, description, children }: { title: string; description?: string; children: React.ReactNode }) => (
-  <div style={{ marginBottom: '48px' }}>
-    <h2 style={{ fontSize: '20px', fontWeight: 600, marginBottom: '8px', color: '#111' }}>{title}</h2>
-    {description && <p style={{ fontSize: '14px', color: '#666', marginBottom: '16px' }}>{description}</p>}
-    <div style={{ padding: '24px', background: '#fafafa', borderRadius: '8px' }}>
-      {children}
-    </div>
-  </div>
-);
 
 // Interactive single slider demo
 const SingleSliderDemo = ({ showLabels = true }: { showLabels?: boolean }) => {
@@ -49,9 +39,9 @@ const CustomRangeDemo = () => {
   const [value, setValue] = useState(500);
   return (
     <div style={{ width: '300px' }}>
-      <Slider 
-        value={value} 
-        onChange={(v) => setValue(v as number)} 
+      <Slider
+        value={value}
+        onChange={(v) => setValue(v as number)}
         min={0}
         max={1000}
         step={50}
@@ -67,14 +57,11 @@ export const Documentation: Story = {
     layout: 'fullscreen',
   },
   render: () => (
-    <div style={{ padding: '40px', maxWidth: '900px' }}>
-      {/* Header */}
-      <div style={{ marginBottom: '40px' }}>
-        <h1 style={{ fontSize: '32px', fontWeight: 700, marginBottom: '8px' }}>Slider</h1>
-        <p style={{ fontSize: '16px', color: '#666' }}>
-          A slider input for selecting a single value or a range of values. Supports custom min/max, step increments, and value labels.
-        </p>
-      </div>
+    <StoryPage>
+      <StoryHeader
+        title="Slider"
+        description="A slider input for selecting a single value or a range of values. Supports custom min/max, step increments, and value labels."
+      />
 
       {/* Single Slider */}
       <Section title="Single Slider" description="Drag the handle to select a value.">
@@ -94,8 +81,8 @@ export const Documentation: Story = {
       {/* Without Labels */}
       <Section title="Without Labels" description="Sliders can be used without value labels.">
         <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', width: '300px' }}>
-            <SingleSliderDemo showLabels={false} />
-    <RangeSliderDemo showLabels={false} />
+          <SingleSliderDemo showLabels={false} />
+          <RangeSliderDemo showLabels={false} />
         </div>
       </Section>
 
@@ -109,67 +96,17 @@ export const Documentation: Story = {
 
       {/* API Reference */}
       <Section title="API Reference">
-        <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px' }}>
-          <thead>
-            <tr style={{ borderBottom: '2px solid #e0e0e0', textAlign: 'left' }}>
-              <th style={{ padding: '12px 16px 12px 0', fontWeight: 600 }}>Prop</th>
-              <th style={{ padding: '12px 16px 12px 0', fontWeight: 600 }}>Type</th>
-              <th style={{ padding: '12px 16px 12px 0', fontWeight: 600 }}>Default</th>
-              <th style={{ padding: '12px 0', fontWeight: 600 }}>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>value</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>number | [number, number]</td>
-              <td style={{ padding: '12px 16px 12px 0' }}>required</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Current value (single) or range (array)</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>onChange</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>(value) =&gt; void</td>
-              <td style={{ padding: '12px 16px 12px 0' }}>-</td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Called when value changes</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>min</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>number</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>0</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Minimum value</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>max</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>number</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>100</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Maximum value</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>step</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>number</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>1</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Step increment</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>disabled</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>boolean</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>false</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Disable the slider</td>
-            </tr>
-            <tr style={{ borderBottom: '1px solid #e0e0e0' }}>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>showLabels</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>boolean</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>false</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Show value labels</td>
-            </tr>
-            <tr>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>formatLabel</code></td>
-              <td style={{ padding: '12px 16px 12px 0', color: '#666' }}>(value) =&gt; string</td>
-              <td style={{ padding: '12px 16px 12px 0' }}><code>{`(v) => \`\${v}%\``}</code></td>
-              <td style={{ padding: '12px 0', color: '#666' }}>Format label display</td>
-            </tr>
-          </tbody>
-        </table>
+        <PropsTable rows={[
+          ['value', 'number | [number, number]', 'required', 'Current value (single) or range (array)'],
+          ['onChange', '(value) => void', '-', 'Called when value changes'],
+          ['min', 'number', '0', 'Minimum value'],
+          ['max', 'number', '100', 'Maximum value'],
+          ['step', 'number', '1', 'Step increment'],
+          ['disabled', 'boolean', 'false', 'Disable the slider'],
+          ['showLabels', 'boolean', 'false', 'Show value labels'],
+          ['formatLabel', '(value) => string', "(v) => `${v}%`", 'Format label display'],
+        ]} />
       </Section>
-    </div>
+    </StoryPage>
   ),
 };

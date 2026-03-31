@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": false
+  },
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.stories.tsx",
+    "**/*.stories.ts",
+    "**/*.test.tsx",
+    "**/*.test.ts",
+    "**/*.spec.tsx",
+    "**/*.spec.ts",
+    ".storybook"
+  ]
+}

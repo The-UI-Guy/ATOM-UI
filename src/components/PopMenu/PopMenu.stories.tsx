@@ -20,7 +20,7 @@ import {
 } from '@phosphor-icons/react';
 import { PopMenu } from './PopMenu';
 import { ListItem } from '../ListItem/ListItem';
-import { Divider } from '../Divder/Divider';
+import { Divider } from '../Divider/Divider';
 import { Checkbox } from '../Checkbox/Checkbox';
 import { Radio } from '../Radio/Radio';
 import { StoryPage, StoryHeader, Section, PropsTable } from '../../stories/StoryComponents';

@@ -116,14 +116,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     // ==========================================
     const sizeStyles: Record<string, string> = {
       sm: iconOnly
-        ? 'h-[28px] w-[28px] font-atom-medium text-sm'           // 28px square for icon-only
-        : 'h-[28px] px-2 font-atom-medium  text-sm gap-1.5',  // 28px height
+        ? 'h-7 w-7 font-atom-medium text-atom-sm'             // 28px square for icon-only
+        : 'h-7 px-2 font-atom-medium text-atom-sm gap-1.5',   // 28px height
       md: iconOnly
-        ? 'h-5 w-5 text-base text-sm'        // 40px square for icon-only
-        : 'h-5 px-2 font-atom-medium text-sm gap-2',   // 40px height
+        ? 'h-10 w-10 font-atom-medium text-atom-sm'           // 40px square for icon-only
+        : 'h-10 px-2 font-atom-medium text-atom-sm gap-2',    // 40px height
       lg: iconOnly
-        ? 'h-6 w-6 font-atom-medium'          // 48px square for icon-only
-        : 'h-6 px-3 text-atom-sm gap-2 ', // 48px height
+        ? 'h-12 w-12 font-atom-medium text-atom-sm'           // 48px square for icon-only
+        : 'h-12 px-3 font-atom-medium text-atom-sm gap-2',    // 48px height
     };
 
     // ==========================================

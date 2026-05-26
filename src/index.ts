@@ -23,8 +23,8 @@ export type { CheckboxProps, CheckboxSize } from './components/Checkbox';
 export { DatePicker } from './components/DatePicker';
 export type { DatePickerProps, DatePickerVariant } from './components/DatePicker';
 
-export { Divider } from './components/Divder';
-export type { DividerProps, DividerType, DividerColor, DividerSpacing } from './components/Divder';
+export { Divider } from './components/Divider';
+export type { DividerProps, DividerType, DividerColor, DividerSpacing } from './components/Divider';
 
 export { FileUpload } from './components/FileUpload';
 export type { FileUploadProps } from './components/FileUpload';

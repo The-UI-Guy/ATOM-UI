@@ -1,5 +1,5 @@
 {
-  "name": "@atom_ui/atom-ui",
+  "name": "@atom-ui/atom-ui",
   "version": "0.1.0",
   "description": "A themeable React UI Component Library",
   "author": "Miles Walker",
@@ -39,6 +39,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build && tsc -p tsconfig.build.json && npm run build:styles",
+    "prepare": "npm run build",
     "build:styles": "mkdir -p dist/styles && cp dist/atom-ui.css dist/styles/globals.css",
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
@@ -76,12 +77,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/yourusername/atom-ui.git"
+    "url": "https://github.com/The-UI-Guy/ATOM-UI.git"
   },
   "bugs": {
-    "url": "https://github.com/yourusername/atom-ui/issues"
+    "url": "https://github.com/The-UI-Guy/ATOM-UI/issues"
   },
-  "homepage": "https://github.com/yourusername/atom-ui#readme",
+  "homepage": "https://github.com/The-UI-Guy/ATOM-UI#readme",
   "dependencies": {
     "@phosphor-icons/react": "^2.1.10",
     "@radix-ui/react-dropdown-menu": "^2.1.16",

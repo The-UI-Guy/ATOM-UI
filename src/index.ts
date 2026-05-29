@@ -23,6 +23,15 @@ export type { CheckboxProps, CheckboxSize } from './components/Checkbox';
 export { DatePicker } from './components/DatePicker';
 export type { DatePickerProps, DatePickerVariant } from './components/DatePicker';
 
+export { Dialog } from './components/Dialog';
+export type { DialogProps, DialogSize, DialogAction } from './components/Dialog';
+
+export { Pagination } from './components/Pagination';
+export type { PaginationProps } from './components/Pagination';
+
+export { Table } from './components/Table';
+export type { TableProps, TableColumn, TableToolbarConfig, BulkAction } from './components/Table';
+
 export { Divider } from './components/Divider';
 export type { DividerProps, DividerType, DividerColor, DividerSpacing } from './components/Divider';
 

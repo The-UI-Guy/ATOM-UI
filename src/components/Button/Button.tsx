@@ -122,8 +122,8 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         ? 'h-[40px] w-[40px] font-atom-medium text-atom-sm'
         : 'h-[40px] px-2 font-atom-medium text-atom-sm gap-1',
       lg: iconOnly
-        ? 'h-[48px] w-[48px] font-atom-medium text-atom-sm'
-        : 'h-[48px] px-2 font-atom-medium text-atom-sm gap-1',
+        ? 'h-[48px] w-[48px] font-atom-medium text-atom-md'
+        : 'h-[48px] px-2 font-atom-medium text-atom-md gap-1',
     };
 
     // ==========================================

@@ -641,7 +641,7 @@ export function Table<T extends Record<string, unknown>>({
                     isSelected={isSelected}
                     isEditing={isEditing}
                     isDirty={isDirty}
-                    isLastRow={isLastRow && !pagination}
+                    isLastRow={isLastRow}
                     selectable={selectable}
                     autoSave={autoSave}
                     activeCell={activeCell}

@@ -23,6 +23,9 @@ export type { CheckboxProps, CheckboxSize } from './components/Checkbox';
 export { DatePicker } from './components/DatePicker';
 export type { DatePickerProps, DatePickerVariant } from './components/DatePicker';
 
+export { Confirm } from './components/Confirm';
+export type { ConfirmProps, ConfirmPosition } from './components/Confirm';
+
 export { Dialog } from './components/Dialog';
 export type { DialogProps, DialogSize, DialogAction } from './components/Dialog';
 
@@ -58,6 +61,12 @@ export type { SwitchProps, SwitchSize } from './components/Switch';
 
 export { Tabs, TabPanel } from './components/Tabs';
 export type { TabsProps, TabPanelProps, TabItem, TabsVariant, TabsSize, TabsOrientation } from './components/Tabs';
+
+export { Stepper, Step } from './components/Stepper';
+export type { StepperProps, StepProps, StepStage, StepOrientation } from './components/Stepper';
+
+export { ProgressBar, ProgressWheel } from './components/Progress';
+export type { ProgressBarProps, ProgressWheelProps } from './components/Progress';
 
 export { Tag } from './components/Tag';
 export type { TagProps, TagSize, TagVariant, TagCounterProps } from './components/Tag';

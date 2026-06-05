@@ -164,8 +164,11 @@ export const Dialog = ({
                   margin: '4px 0 0',
                   fontSize: 14,
                   lineHeight: '20px',
-                  color: 'var(--atom-text-secondary)',
+                  color: 'var(--atom-text-tertiary)',
                   fontFamily: 'var(--atom-font-family)',
+                  overflow: 'hidden',
+                  whiteSpace: 'nowrap',
+                  textOverflow: 'ellipsis',
                 }}
               >
                 {description}
@@ -214,7 +217,7 @@ export const Dialog = ({
                 <Button
                   key={i}
                   variant={action.variant ?? 'outline'}
-                  size="md"
+                  size="sm"
                   onClick={action.onClick}
                   loading={action.loading}
                   disabled={action.disabled}

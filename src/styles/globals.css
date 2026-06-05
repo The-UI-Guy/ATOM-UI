@@ -473,13 +473,13 @@
   /* Font Family → font-atom */
   --font-family-atom: var(--atom-font-family);
 
-  /* Font Sizes → text-atom-* (hardcoded values) */
-  --font-size-atom-xs: 12px;
-  --font-size-atom-sm: 14px;
-  --font-size-atom-md: 16px;
-  --font-size-atom-lg: 18px;
-  --font-size-atom-xl: 20px;
-  --font-size-atom-2xl: 24px;
+  /* Font Sizes → text-atom-* */
+  --text-atom-xs: 12px;
+  --text-atom-sm: 14px;
+  --text-atom-md: 16px;
+  --text-atom-lg: 18px;
+  --text-atom-xl: 20px;
+  --text-atom-2xl: 24px;
 
   /* Font Weights → font-atom-* */
   --font-weight-atom-regular: 400;
